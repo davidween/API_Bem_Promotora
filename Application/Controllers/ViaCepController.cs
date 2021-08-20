@@ -23,7 +23,7 @@ namespace Application.Controllers
             {
                 Endereco endereco = null;
                 
-                HttpResponseMessage response = await client.GetAsync("https://viacep.com.br/ws/{cep}/json/");
+                HttpResponseMessage response = await client.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
                 if (response.IsSuccessStatusCode)
                 {
                     response.EnsureSuccessStatusCode();
