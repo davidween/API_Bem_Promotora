@@ -1,0 +1,102 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "FluentValidation/10.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/FluentValidation.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FluentValidation/10.3.0": {
+      "sha512": "ujEB9UMBPDLib6dyhSRhl93IE6ko4ZU6Nz9MFqohaKcvyf06Hk0yDQUFJGF6RgAOsm27O7ZZHVDpXx7oU5vBcg==",
+      "type": "package",
+      "path": "fluentvalidation/10.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluent-validation-icon.png",
+        "fluentvalidation.10.3.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "fluentvalidation >= 10.3.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/m-david/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj",
+      "projectName": "Domain",
+      "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj",
+      "packagesPath": "/home/m-david/.nuget/packages/",
+      "outputPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/m-david/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "fluentvalidation": {
+            "target": "Package",
+            "version": "[10.3.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
