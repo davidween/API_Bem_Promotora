@@ -44,11 +44,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj",
+      "projectUniqueName": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj",
+      "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj",
       "packagesPath": "/home/m-david/.nuget/packages/",
-      "outputPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/obj/",
+      "outputPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/m-david/.nuget/NuGet/NuGet.Config"

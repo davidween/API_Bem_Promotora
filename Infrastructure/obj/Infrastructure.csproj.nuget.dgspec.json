@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj": {}
+    "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj": {}
   },
   "projects": {
-    "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj": {
+    "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj",
+        "projectUniqueName": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj",
+        "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj",
         "packagesPath": "/home/m-david/.nuget/packages/",
-        "outputPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/obj/",
+        "outputPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/m-david/.nuget/NuGet/NuGet.Config"
@@ -62,14 +62,14 @@
         }
       }
     },
-    "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj": {
+    "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj",
+        "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj",
         "packagesPath": "/home/m-david/.nuget/packages/",
-        "outputPath": "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/obj/",
+        "outputPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/m-david/.nuget/NuGet/NuGet.Config"
@@ -84,8 +84,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj": {
-                "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj"
+              "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj": {
+                "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj"
               }
             }
           }

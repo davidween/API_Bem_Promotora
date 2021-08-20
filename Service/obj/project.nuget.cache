@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jOs/5TfodkaztpnCXu75O5x2eTjpM9596uzTdcfJHal+TM57S2jfSi7CdPM2KE8FBRBtkMCMjeix0PZr7BPzXQ==",
+  "dgSpecHash": "YidIv5siGV+BQNejdCzaUynWdAAm6nlh+eY1PRcqa6HmOKY6gcAtuYOgfG6AHZpsv60zEsUZDwroDUZd4dGAiA==",
   "success": true,
-  "projectFilePath": "/home/m-david/Documentos/Teste/API_bempreparados/Service/Service.csproj",
+  "projectFilePath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Service/Service.csproj",
   "expectedPackageFiles": [
     "/home/m-david/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/m-david/.nuget/packages/fluentvalidation/10.3.0/fluentvalidation.10.3.0.nupkg.sha512",

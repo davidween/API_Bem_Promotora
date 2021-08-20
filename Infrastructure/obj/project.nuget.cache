@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iHDNePqNsUBFbanSYuBh1II/XJ8tgb/9oVCAiymO21DktX95i49aafAoOfZjr8w/e6TWGj451UzDKJbTgvF0ow==",
+  "dgSpecHash": "+cxCbvY5Wz1qYhrR9iN+BEXmFB0UM91lt9C1ymqNzewnxsuUlmKoEVU3YIxPaBOI0E1Rek44+u/S2lemv3XACg==",
   "success": true,
-  "projectFilePath": "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj",
+  "projectFilePath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
     "/home/m-david/.nuget/packages/fluentvalidation/10.3.0/fluentvalidation.10.3.0.nupkg.sha512",
     "/home/m-david/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

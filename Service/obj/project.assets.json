@@ -5814,11 +5814,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/m-david/Documentos/Teste/API_bempreparados/Service/Service.csproj",
+      "projectUniqueName": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Service/Service.csproj",
       "projectName": "Service",
-      "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Service/Service.csproj",
+      "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Service/Service.csproj",
       "packagesPath": "/home/m-david/.nuget/packages/",
-      "outputPath": "/home/m-david/Documentos/Teste/API_bempreparados/Service/obj/",
+      "outputPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Service/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/m-david/.nuget/NuGet/NuGet.Config"
@@ -5833,11 +5833,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj": {
-              "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Domain/Domain.csproj"
+            "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj": {
+              "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/Domain.csproj"
             },
-            "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj": {
-              "projectPath": "/home/m-david/Documentos/Teste/API_bempreparados/Infrastructure/Infrastructure.csproj"
+            "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj": {
+              "projectPath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj"
             }
           }
         }

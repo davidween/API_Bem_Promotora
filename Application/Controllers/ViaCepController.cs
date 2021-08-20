@@ -1,17 +1,19 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Application.ViewModels;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Application.Controllers
 {
     [ApiController]
-    class ViaCepController : ControllerBase
+    public class ViaCepController : ControllerBase
     {
-        static HttpClient client = new HttpClient();
+        public static HttpClient client = new HttpClient();
         
         [HttpGet]
         [Route("/Endereco/{cep}")]
@@ -20,12 +22,21 @@ namespace Application.Controllers
             try
             {
                 Endereco endereco = null;
+                
                 HttpResponseMessage response = await client.GetAsync("https://viacep.com.br/ws/{cep}/json/");
                 if (response.IsSuccessStatusCode)
                 {
-                    endereco = await response.Content.ReadAsAsync<Endereco>();
+                    response.EnsureSuccessStatusCode();
+                    var responseBody = await response.Content.ReadAsStringAsync();
+                    endereco = JsonConvert.DeserializeObject<Endereco>(responseBody);
                 }
-                return Ok(endereco);  // 200
+                return Ok(
+                    new ResultViewModel
+                    {
+                        Message = "CEP Encontrado!!!",
+                        Success = true,
+                        Data = endereco
+                    });  // 200
             }
 
             catch
