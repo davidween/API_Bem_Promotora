@@ -24,21 +24,28 @@ namespace Application.Controllers
                 Endereco endereco = null;
                 
                 HttpResponseMessage response = await client.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
+
+                var responseBody = await response.Content.ReadAsStringAsync();
+
                 if (response.IsSuccessStatusCode)
                 {
-                    response.EnsureSuccessStatusCode();
-                    var responseBody = await response.Content.ReadAsStringAsync();
                     endereco = JsonConvert.DeserializeObject<Endereco>(responseBody);
-                }
-                return Ok(
+
+                    return Ok(
                     new ResultViewModel
                     {
                         Message = "CEP Encontrado!!!",
                         Success = true,
                         Data = endereco
                     });  // 200
-            }
+                }
 
+                else
+                {
+                    return BadRequest(responseBody);  // Refatorar para meu erro !!!
+                }
+            }
+                
             catch
             {
                 return NotFound();  // 404
