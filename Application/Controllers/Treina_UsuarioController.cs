@@ -55,6 +55,28 @@ namespace Application.Controllers
                 return StatusCode(500, Responses.ApplicationErrorMessage());
             }
         }
+
+        [HttpGet]
+        [Route("/api/v1/treina_usuario/auth/get/")]
+        public async Task<IActionResult> Get([FromQuery] string usuario, [FromQuery] string senha)
+        {
+            try
+            {
+                var resposta = await _treina_UsuarioService.Get(usuario, senha);
+
+                return Ok(new ResultViewModel
+                {
+                    Message = "Resposta encontrado com sucesso!",
+                    Success = true,
+                    Data = resposta
+                });
+            }
+            
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
         
     }
 }

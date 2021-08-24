@@ -1,3 +1,4 @@
+using System;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,5 +20,9 @@ namespace Infrastructure.Context
         public virtual DbSet<Treina_Proposta> TREINA_PROPOSTAS { get; set; }
         public virtual DbSet<Treina_Usuario> TREINA_USUARIOS { get; set; }
         public virtual DbSet<Treina_Conveniada> TREINA_CONVENIADAS { get; set; }
+        
+        [DbFunction("F_AUTENTICAR", "dbo")]
+        public static string AutenticarUsuario(string usuario, string senha)
+            => "Usuário Não Existe";
     }
 }

@@ -21,5 +21,12 @@ namespace Service.Services
 
             return _mapper.Map<Treina_UsuarioDTO>(treina_Usuario);
         }
+
+        public async Task<string> Get(string usuario, string senha)
+        {
+            var resposta = await _treina_UsuarioRepository.GetAutenticacao(usuario, senha);
+
+            return resposta;
+        }
     }
 }
