@@ -28,7 +28,10 @@ namespace Service.DataTransferObject
 
         public DateTime Data_Atualizacao { get; set; }
 
-        public Treina_PropostaDTO(){}
+        public Treina_PropostaDTO()
+        {
+            
+        }
 
         public Treina_PropostaDTO(decimal proposta, string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string observacao, DateTime dt_Situacao, string usuario, string usuario_Atualizacao, DateTime data_Atualizacao)
         {

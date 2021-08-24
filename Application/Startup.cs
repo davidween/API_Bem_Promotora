@@ -49,6 +49,7 @@ namespace Application
             {
                 cfg.CreateMap<Treina_Cliente, Treina_ClienteDTO>().ReverseMap();
                 cfg.CreateMap<Treina_Proposta, Treina_PropostaDTO>().ReverseMap();
+                cfg.CreateMap<Treina_Usuario, Treina_UsuarioDTO>().ReverseMap();
             });
 
             services.AddSingleton(autoMapperConfig.CreateMapper());
@@ -61,8 +62,15 @@ namespace Application
             services.AddDbContext<ManagerContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:USER_MANAGER"]), ServiceLifetime.Transient);
             services.AddScoped<ITreina_ClienteService, Treina_ClienteService>();
             services.AddScoped<ITreina_ClienteRepository, Treina_ClienteRepository>();
+
             services.AddScoped<ITreina_PropostaService, Treina_PropostaService>();
             services.AddScoped<ITreina_PropostaRepository, Treina_PropostaRepository>();
+
+            services.AddScoped<ITreina_UsuarioService, Treina_UsuarioService>();
+            services.AddScoped<ITreina_UsuarioRepository, Treina_UsuarioRepository>();
+
+            services.AddScoped<ITreina_ConveniadaService, Treina_ConveniadaService>();
+            services.AddScoped<ITreina_ConveniadaRepository, Treina_ConveniadaRepository>();
 
             // sevices.AddTransient<> 
             // Uma instâcia em cada ponto do code. ex.: Se uma requisição precisar de 3 construtores, ele cria 3 instâncias.

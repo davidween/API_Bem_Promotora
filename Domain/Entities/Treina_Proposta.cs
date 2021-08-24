@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Exceptions;
 using Domain.Validators;
-using FluentValidation;
 
 namespace Domain.Entities
 {

@@ -17,6 +17,7 @@ namespace Infrastructure.Context
         
         public virtual DbSet<Treina_Cliente> TREINA_CLIENTES { get; set; }
         public virtual DbSet<Treina_Proposta> TREINA_PROPOSTAS { get; set; }
-        
+        public virtual DbSet<Treina_Usuario> TREINA_USUARIOS { get; set; }
+        public virtual DbSet<Treina_Conveniada> TREINA_CONVENIADAS { get; set; }
     }
 }
