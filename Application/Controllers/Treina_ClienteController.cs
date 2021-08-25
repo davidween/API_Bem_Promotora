@@ -22,7 +22,5 @@ namespace Application.Controllers
             _mapper = mapper;
             _treina_ClienteService = treina_ClienteService;
         }
-
-        
     }
 }

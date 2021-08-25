@@ -6,8 +6,6 @@ namespace Infrastructure.Interfaces
 {
     public interface ITreina_ClienteRepository
     {
-        Task<Treina_Cliente> Create(Treina_Cliente treina_Cliente);
-
         Task<Treina_Cliente> GetByCpf(string cpf);
         
     }

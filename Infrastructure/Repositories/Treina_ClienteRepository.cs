@@ -16,15 +16,6 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public virtual async Task<Treina_Cliente> Create(Treina_Cliente treina_Cliente)
-        {
-            _context.Add(treina_Cliente);  // Adicionamos a entidade ao context
-
-            await _context.SaveChangesAsync();
-
-            return treina_Cliente;
-        }
-
         public async Task<Treina_Cliente> GetByCpf(string cpf)
         {
             var treina_Cliente = await _context.TREINA_CLIENTES
