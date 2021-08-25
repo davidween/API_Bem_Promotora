@@ -5,6 +5,6 @@ namespace Service.Interfaces
 {
     public interface ITreina_PropostaService
     {
-        Task<Treina_PropostaDTO> Create(Treina_PropostaDTO propostaDTO);
+        Task<CompositeObjectDTO> Create(CompositeObjectDTO compositeObjectDTO);
     }
 }

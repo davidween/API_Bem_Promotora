@@ -16,13 +16,14 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public virtual async Task<Treina_Proposta> Create(Treina_Proposta treina_Proposta)
+        public virtual async Task<CompositeObject> Create(CompositeObject compositeObject)
         {
-            _context.Add(treina_Proposta);  // Adicionamos a entidade ao context
+            _context.Add(compositeObject.treina_Cliente);  // Adicionamos a entidade ao context
+            _context.Add(compositeObject.treina_Proposta);  // Adicionamos a entidade ao context
 
             await _context.SaveChangesAsync();
 
-            return treina_Proposta;
+            return compositeObject;
         }
 
         public async Task<Treina_Proposta> GetByCpf(string cpf)

@@ -36,7 +36,8 @@ namespace Application.Controllers
                     {
                         Message = "CEP Encontrado!!!",
                         Success = true,
-                        Data = endereco
+                        Data1 = endereco,
+                        Data2 = null
                     });  // 200
                 }
 

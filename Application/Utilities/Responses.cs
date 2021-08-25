@@ -11,7 +11,8 @@ namespace Application.Utilities
             {
                 Message = "Ocorreu algum erro interno na aplicação, por favor tente novamente.",
                 Success = false,
-                Data = null
+                Data1 = null,
+                Data2 = null
             };
         }
 
@@ -21,7 +22,8 @@ namespace Application.Utilities
             {
                 Message = message,
                 Success = false,
-                Data = null
+                Data1 = null,
+                Data2 = null
             };
         }
 
@@ -31,7 +33,8 @@ namespace Application.Utilities
             {
                 Message = message,
                 Success = false,
-                Data = errors
+                Data1 = errors,
+                Data2 = null
             };
         }
 
@@ -41,7 +44,8 @@ namespace Application.Utilities
             {
                 Message = "A combinação de login e senha está incorreta!",
                 Success = false,
-                Data = null
+                Data1 = null,
+                Data2 = null
             };
         }
     }

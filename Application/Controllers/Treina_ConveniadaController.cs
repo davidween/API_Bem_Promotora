@@ -30,14 +30,16 @@ namespace Application.Controllers
                     {
                         Message = "Nenhuma conveniada foi encontrado com o nome informado.",
                         Success = true,
-                        Data = conveniada
+                        Data1 = conveniada,
+                        Data2 = null
                     });
 
                 return Ok(new ResultViewModel
                 {
                     Message = "Conveniada encontrado com sucesso!",
                     Success = true,
-                    Data = conveniada
+                    Data1 = conveniada,
+                    Data2 = null
                 });
             }
             

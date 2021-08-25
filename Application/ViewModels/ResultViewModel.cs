@@ -4,6 +4,7 @@ namespace Application.ViewModels
     {
         public string Message { get; set; }
         public bool Success { get; set; }
-        public dynamic Data { get; set; }
+        public dynamic Data1 { get; set; }
+        public dynamic Data2 { get; set; }
     }
 }

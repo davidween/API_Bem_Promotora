@@ -5,7 +5,7 @@ namespace Infrastructure.Interfaces
 {
     public interface ITreina_PropostaRepository
     {
-        Task<Treina_Proposta> Create(Treina_Proposta treina_Proposta);
+        Task<CompositeObject> Create(CompositeObject compositeObject);
 
         Task<Treina_Proposta> GetByCpf(string cpf);
     }

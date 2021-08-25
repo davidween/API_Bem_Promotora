@@ -34,14 +34,16 @@ namespace Application.Controllers
                     {
                         Message = "Nenhum usuário foi encontrado com o nome informado.",
                         Success = true,
-                        Data = treina_Usuario
+                        Data1 = treina_Usuario,
+                        Data2 = null
                     });
 
                 return Ok(new ResultViewModel
                 {
                     Message = "Usuário encontrado com sucesso!",
                     Success = true,
-                    Data = treina_Usuario
+                    Data1 = treina_Usuario,
+                    Data2 = null
                 });
             }
 
@@ -68,7 +70,8 @@ namespace Application.Controllers
                 {
                     Message = "Resposta encontrado com sucesso!",
                     Success = true,
-                    Data = resposta
+                    Data1 = resposta,
+                    Data2 = null
                 });
             }
             
