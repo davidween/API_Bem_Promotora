@@ -20,6 +20,13 @@ namespace Infrastructure.Context
         public virtual DbSet<Treina_Proposta> TREINA_PROPOSTAS { get; set; }
         public virtual DbSet<Treina_Usuario> TREINA_USUARIOS { get; set; }
         public virtual DbSet<Treina_Conveniada> TREINA_CONVENIADAS { get; set; }
+        public virtual DbSet<Treina_CalculoJuros> TREINA_CALCULOJUROS { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Treina_CalculoJuros>()
+                .HasNoKey();
+        }
         
         [DbFunction("F_AUTENTICAR", "dbo")]
         public static string AutenticarUsuario(string usuario, string senha)

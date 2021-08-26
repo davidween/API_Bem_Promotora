@@ -72,6 +72,9 @@ namespace Application
             services.AddScoped<ITreina_ConveniadaService, Treina_ConveniadaService>();
             services.AddScoped<ITreina_ConveniadaRepository, Treina_ConveniadaRepository>();
 
+            services.AddScoped<ITreina_CalculoJurosService, Treina_CalculoJurosService>();
+            services.AddScoped<ITreina_CalculoJurosRepository, Treina_CalculoJurosRepository>();
+
             // sevices.AddTransient<> 
             // Uma instâcia em cada ponto do code. ex.: Se uma requisição precisar de 3 construtores, ele cria 3 instâncias.
 
