@@ -18,7 +18,7 @@ namespace Application.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ITreina_UsuarioService _treina_UsuarioService;
-        private readonly IConfiguration _configuration;
+        private IConfiguration _configuration;
         private readonly ITokenGenerator _tokenGenerator;
 
         public Treina_UsuarioController(IMapper mapper, ITreina_UsuarioService treina_UsuarioService, IConfiguration configuration, ITokenGenerator tokenGenerator)
