@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Entities;
 
@@ -8,5 +9,7 @@ namespace Infrastructure.Interfaces
         Task<CompositeObject> Create(CompositeObject compositeObject);
 
         Task<Treina_Proposta> GetByCpf(string cpf);
+
+        Task<List<CompositeObject>> GetAll(string usuario);
     }
 }

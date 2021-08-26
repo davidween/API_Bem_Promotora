@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Entities;
@@ -53,6 +54,35 @@ namespace Service.Services
 
                 return compositeObjectDTO;
             }
+        }
+
+        public async Task<CompositeObjectDTO> Get(string cpf)
+        {
+            var treina_Cliente = await _treina_ClienteRepository.GetByCpf(cpf);
+            var treina_Proposta = await _treina_PropostaRepository.GetByCpf(cpf);
+
+            var compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(treina_Cliente),_mapper.Map<Treina_PropostaDTO>(treina_Proposta));
+
+            return compositeObjectDTO;
+        }
+
+        public async Task<List<CompositeObjectDTO>> GetAll(string usuario)
+        {
+            var compositeObject = await _treina_PropostaRepository.GetAll(usuario);
+
+            var allCompositeObjectDTO = new List<CompositeObjectDTO>();
+
+             for(int i = 0; i < compositeObject.Count; i++)
+             {
+                 var treina_Cliente = compositeObject[i].treina_Cliente;
+                 var treina_Proposta = compositeObject[i].treina_Proposta;
+
+                 var compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(treina_Cliente),_mapper.Map<Treina_PropostaDTO>(treina_Proposta));
+
+                 allCompositeObjectDTO.Add(compositeObjectDTO);
+             }
+
+            return allCompositeObjectDTO;
         }
     }
 }

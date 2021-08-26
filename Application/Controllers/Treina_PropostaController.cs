@@ -26,7 +26,7 @@ namespace Application.Controllers
         }
 
         [HttpPost]
-        [Route("/api/v1/treina_proposta_cliente/create")]
+        [Route("/api/v1/treina_cliente_proposta/create")]
         public async Task<IActionResult> Create([FromBody] CompositeObject compositeObject)
         {
             try
@@ -57,6 +57,52 @@ namespace Application.Controllers
             catch(Exception)  // ex para eu ver o erro exato
             {
                 return StatusCode(500, Responses.ApplicationErrorMessage());
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/v1/treina_cliente_proposta/get/{cpf}")]
+        public async Task<IActionResult> Get(string cpf)
+        {
+            try
+            {
+                var compositeObjectDTO = await _treina_PropostaService.Get(cpf);
+
+                return Ok(new ResultViewModel
+                {
+                    Message = "Consulta realizada com sucesso!",
+                    Success = true,
+                    Data1 = compositeObjectDTO.treina_ClienteDTO,
+                    Data2 = compositeObjectDTO.treina_PropostaDTO
+                });
+            }
+
+            catch
+            {
+                return StatusCode(500, Responses.ApplicationErrorMessage());
+            }
+        }
+
+        [HttpGet]
+        [Route("/api/v1/treina_cliente_proposta/getall/{usuario}")]
+        public async Task<IActionResult> GetAll(string usuario)
+        {
+            try
+            {
+                var allCompositeObjectDTO = await _treina_PropostaService.GetAll(usuario);
+
+                return Ok(new ResultViewModel
+                {
+                    Message = "Consulta realizada com sucesso!",
+                    Success = true,
+                    Data1 = allCompositeObjectDTO,
+                    Data2 = null
+                });
+            }
+
+            catch(Exception e)
+            {
+                return StatusCode(500, e.Message);
             }
         }
     }
