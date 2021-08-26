@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Application.Token;
 using Application.ViewModels;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Context;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -17,6 +20,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Service.DataTransferObject;
 using Service.Interfaces;
@@ -38,10 +42,47 @@ namespace Application
         {
 
             services.AddControllers();
+            
+            #region Swagger
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Application", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "API_Bem_Promotora",
+                    Version = "v1",
+                    Description = "API construída para um projeto de avaliação de estágio na Empresa Bem Promotora. (Bearer)",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "M. David Sousa",
+                        Email = "issac.newton.1643.apple@gmail.com",
+                        Url = new Uri("https://www.linkedin.com/in/marcos-david-almeida-de-sousa-499449207/")
+                    },
+                });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Por favor, utilize Bearer <TOKEN>",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] { }
+                }
+                });
             });
+
+            #endregion
 
             #region AutoMapper
 
@@ -75,6 +116,8 @@ namespace Application
             services.AddScoped<ITreina_CalculoJurosService, Treina_CalculoJurosService>();
             services.AddScoped<ITreina_CalculoJurosRepository, Treina_CalculoJurosRepository>();
 
+            services.AddScoped<ITokenGenerator, TokenGenerator>();
+
             // sevices.AddTransient<> 
             // Uma instâcia em cada ponto do code. ex.: Se uma requisição precisar de 3 construtores, ele cria 3 instâncias.
 
@@ -84,6 +127,29 @@ namespace Application
             // sevices.AddScoped<>  
             // Uma instâcia por requisição.
 
+            #endregion
+
+            #region Jwt
+
+            var secretKey = Configuration["Jwt:Key"];
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             #endregion
         }
@@ -103,6 +169,7 @@ namespace Application
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

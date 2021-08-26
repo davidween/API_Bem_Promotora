@@ -2,11 +2,13 @@ using System;
 using System.Threading.Tasks;
 using Application.Utilities;
 using Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 
 namespace Application.Controllers
 {
+    [Authorize]
     public class Treina_CalculoJurosContoller : ControllerBase
     {
         private readonly ITreina_CalculoJurosService _treina_CalculoJurosService;
@@ -17,6 +19,7 @@ namespace Application.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/treina_calculo_juros/get/{Vlr_Solicitado}/{Prazo}")]
         public async Task<IActionResult> Get(decimal Vlr_Solicitado, decimal Prazo)
         {

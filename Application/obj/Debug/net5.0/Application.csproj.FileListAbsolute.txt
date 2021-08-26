@@ -148,6 +148,8 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/AutoMapper.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/FluentValidation.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/System.Net.Http.Formatting.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Microsoft.Data.SqlClient.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Abstractions.dll

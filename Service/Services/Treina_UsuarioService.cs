@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
+using Domain.Entities;
 using Infrastructure.Interfaces;
 using Service.DataTransferObject;
 using Service.Interfaces;
@@ -22,11 +23,13 @@ namespace Service.Services
             return _mapper.Map<Treina_UsuarioDTO>(treina_Usuario);
         }
 
-        public async Task<string> Get(string usuario, string senha)
+        public async Task<string> Auth(Treina_UsuarioDTO treina_UsuarioDTO)
         {
-            var resposta = await _treina_UsuarioRepository.GetAutenticacao(usuario, senha);
+            var treina_Usuario = _mapper.Map<Treina_Usuario>(treina_UsuarioDTO);
 
-            return resposta;
+            var message = await _treina_UsuarioRepository.Auth(treina_Usuario);
+
+            return message;
         }
     }
 }

@@ -19,22 +19,22 @@ namespace Infrastructure.Repositories
         {
             var obj = await _context.Set<Treina_Usuario>()
                                     .AsNoTracking()
-                                    .Where(x => x.Nome == nome)
+                                    .Where(x => x.Usuario == nome)
                                     .ToListAsync();
             return obj.FirstOrDefault();
                                     
         }
 
-        public virtual async Task<string> GetAutenticacao(string usuario, string senha)
+        public virtual async Task<string> Auth(Treina_Usuario treina_Usuario)
         {
             var obj = await _context.Set<Treina_Usuario>()
                                     .AsNoTracking()
-                                    .Where(x => x.Usuario == usuario)
-                                    .Select(x => new { Resposta = ManagerContext.AutenticarUsuario(usuario, senha) })
+                                    .Where(x => x.Usuario == treina_Usuario.Usuario)
+                                    .Select(x => new { Resposta = ManagerContext.AutenticarUsuario(treina_Usuario.Usuario, treina_Usuario.Senha) })
                                     .ToListAsync();
             if(obj.Count == 0)
             {
-                return  "Usuário não existe";
+                return  "Usuário ou Senha incorretos!!!";
             }
 
             else

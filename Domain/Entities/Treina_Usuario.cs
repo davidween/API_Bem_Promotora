@@ -8,12 +8,14 @@ namespace Domain.Entities
     {
         [Key]
         [Column("Usuario")]
+        [Required(ErrorMessage = "O usuário não pode ser vazio.")]
         public string Usuario { get; set; }
 
         [Column("Senha")]
+        [Required(ErrorMessage = "A senha não pode ser vazia.")]
         public string Senha { get; set; }
 
-        [Column("Nome")]
+        /*[Column("Nome")]
         public string Nome { get; set; }
 
         [Column("Usuario_Atualizacao")]
@@ -23,21 +25,21 @@ namespace Domain.Entities
         public DateTime Data_Atualizacao { get; set; }
 
         [Column("Senha_Validade")]
-        public DateTime Senha_Validade { get; set; }
+        public DateTime Senha_Validade { get; set; }*/
 
         protected Treina_Usuario()
         {
 
         }
 
-        public Treina_Usuario(string usuario, string senha, string nome, string usuario_Atualizacao, DateTime data_Atualizacao, DateTime senha_Validade)
+        public Treina_Usuario(string usuario, string senha/*, string nome, string usuario_Atualizacao, DateTime data_Atualizacao, DateTime senha_Validade*/)
         {
             Usuario = usuario;
             Senha = senha;
-            Nome = nome;
+            /*Nome = nome;
             Usuario_Atualizacao = usuario_Atualizacao;
             Data_Atualizacao = data_Atualizacao;
-            Senha_Validade = senha_Validade;
+            Senha_Validade = senha_Validade;*/
         }
     }
 }

@@ -5,6 +5,7 @@ using Application.ViewModels;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.DataTransferObject;
 using Service.Interfaces;
@@ -26,6 +27,7 @@ namespace Application.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("/api/v1/treina_cliente_proposta/create")]
         public async Task<IActionResult> Create([FromBody] CompositeObject compositeObject)
         {
@@ -61,6 +63,7 @@ namespace Application.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/treina_cliente_proposta/get/{cpf}")]
         public async Task<IActionResult> Get(string cpf)
         {
@@ -84,6 +87,7 @@ namespace Application.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/treina_cliente_proposta/getall/{usuario}")]
         public async Task<IActionResult> GetAll(string usuario)
         {
@@ -107,6 +111,7 @@ namespace Application.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [Route("/api/v1/treina_cliente_proposta/update")]
         public async Task<IActionResult> Update([FromBody] CompositeObject compositeObject)
         {

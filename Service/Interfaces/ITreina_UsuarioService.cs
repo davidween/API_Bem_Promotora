@@ -7,6 +7,6 @@ namespace Service.Interfaces
     {
         Task<Treina_UsuarioDTO> Get(string nome);
 
-        Task<string> Get(string usuario, string senha);
+        Task<string> Auth(Treina_UsuarioDTO treina_UsuarioDTO);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Application.Utilities;
 using Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 
@@ -18,6 +19,7 @@ namespace Application.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("/api/v1/treina_conveniada/get/{descricao}")]
         public async Task<IActionResult> Get(string descricao)
         {

@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Application.ViewModels;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -16,6 +17,7 @@ namespace Application.Controllers
         public static HttpClient client = new HttpClient();
         
         [HttpGet]
+        [Authorize]
         [Route("/Endereco/{cep}")]
         public async Task<IActionResult> RecuperarEnderecoPorCep(string cep)
         {
