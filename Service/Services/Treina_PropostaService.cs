@@ -84,5 +84,41 @@ namespace Service.Services
 
             return allCompositeObjectDTO;
         }
+
+        public async Task<CompositeObjectDTO> Update(CompositeObjectDTO compositeObjectDTO)
+        {
+            var propostaExists = await _treina_PropostaRepository.GetByCpf(compositeObjectDTO.treina_PropostaDTO.Cpf);
+            var clienteExists = await _treina_ClienteRepository.GetByCpf(compositeObjectDTO.treina_ClienteDTO.Cpf);
+            
+            if(clienteExists == null)
+            {
+                throw new DomainException("Não existe cliente cadastrado!!!");
+            }
+
+            else if(propostaExists == null)
+            {
+                throw new DomainException("Não existe  uma proposta cadastrada!!!");
+            }
+                
+            else
+            {
+                var treina_Cliente = _mapper.Map<Treina_Cliente>(compositeObjectDTO.treina_ClienteDTO);
+                
+                treina_Cliente.Validate();
+                //-------------------
+                var treina_Proposta = _mapper.Map<Treina_Proposta>(compositeObjectDTO.treina_PropostaDTO);
+                
+                treina_Proposta.Validate();
+                //--------------------
+                var compositeObject = new CompositeObject(treina_Cliente, treina_Proposta);
+
+                var compositeObjectUpdated = await _treina_PropostaRepository.Update(compositeObject);
+                // ------------------
+                
+                compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(compositeObjectUpdated.treina_Cliente),_mapper.Map<Treina_PropostaDTO>(compositeObjectUpdated.treina_Proposta));
+
+                return compositeObjectDTO;
+            }
+        }
     }
 }

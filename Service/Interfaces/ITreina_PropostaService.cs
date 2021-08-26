@@ -11,5 +11,7 @@ namespace Service.Interfaces
         Task<CompositeObjectDTO> Get(string cpf);
 
         Task<List<CompositeObjectDTO>> GetAll(string usuario);
+
+        Task<CompositeObjectDTO> Update(CompositeObjectDTO compositeObjectDTO);
     }
 }

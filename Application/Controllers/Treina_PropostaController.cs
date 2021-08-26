@@ -105,5 +105,40 @@ namespace Application.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+        [HttpPut]
+        [Route("/api/v1/treina_cliente_proposta/update")]
+        public async Task<IActionResult> Update([FromBody] CompositeObject compositeObject)
+        {
+            try
+            {
+                var treina_clienteDTO = _mapper.Map<Treina_ClienteDTO>(compositeObject.treina_Cliente);
+
+                var treina_propostaDTO = _mapper.Map<Treina_PropostaDTO>(compositeObject.treina_Proposta);
+
+                var compositeObjectDTO = new CompositeObjectDTO(treina_clienteDTO, treina_propostaDTO);
+
+                var compositeObjectCreated = await _treina_PropostaService.Update(compositeObjectDTO);
+
+                return Ok(
+                    new ResultViewModel
+                    {
+                        Message = "Cliente e Proposta atualizados com sucesso!!!",
+                        Success = true,
+                        Data1 = compositeObjectCreated.treina_ClienteDTO,
+                        Data2 = compositeObjectCreated.treina_PropostaDTO
+                    });
+            }
+
+            catch(DomainException ex)
+            {
+                return StatusCode(400, Responses.DomainErrorMessage(ex.Message, ex.Errors));
+            }
+            
+            catch(Exception)  // ex para eu ver o erro exato
+            {
+                return StatusCode(500, Responses.ApplicationErrorMessage());
+            }
+        }
     }
 }

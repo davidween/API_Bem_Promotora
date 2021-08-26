@@ -67,5 +67,15 @@ namespace Infrastructure.Repositories
 
             return allCompositeObject;
         }
+
+        public virtual async Task<CompositeObject> Update(CompositeObject compositeObject)
+        {
+            _context.Entry(compositeObject.treina_Cliente).State = EntityState.Modified;  // Adicionamos a entidade ao context
+            _context.Entry(compositeObject.treina_Proposta).State = EntityState.Modified;  // Adicionamos a entidade ao context
+
+            await _context.SaveChangesAsync();
+
+            return compositeObject;
+        }
     }
 }
