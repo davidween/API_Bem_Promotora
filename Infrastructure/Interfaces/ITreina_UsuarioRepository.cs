@@ -5,7 +5,6 @@ namespace Infrastructure.Interfaces
 {
     public interface ITreina_UsuarioRepository
     {
-        Task<Treina_Usuario> GetByNome(string nome);
         Task<string> Auth(Treina_Usuario treina_Usuario);
     }
 }

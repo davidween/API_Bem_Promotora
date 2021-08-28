@@ -16,13 +16,11 @@ namespace Application.Controllers
     public class Treina_PropostaController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ITreina_ClienteService _treina_ClienteService;
         private readonly ITreina_PropostaService _treina_PropostaService;
 
-        public Treina_PropostaController(IMapper mapper, ITreina_ClienteService treina_ClienteService, ITreina_PropostaService treina_PropostaService)
+        public Treina_PropostaController(IMapper mapper, ITreina_PropostaService treina_PropostaService)
         {
             _mapper = mapper;
-            _treina_ClienteService = treina_ClienteService;
             _treina_PropostaService = treina_PropostaService;
         }
 

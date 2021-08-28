@@ -16,13 +16,6 @@ namespace Service.Services
             _mapper = mapper;
             _treina_UsuarioRepository = treina_UsuarioRepository;
         }
-        public async Task<Treina_UsuarioDTO> Get(string nome)
-        {
-            var treina_Usuario = await _treina_UsuarioRepository.GetByNome(nome);
-
-            return _mapper.Map<Treina_UsuarioDTO>(treina_Usuario);
-        }
-
         public async Task<string> Auth(Treina_UsuarioDTO treina_UsuarioDTO)
         {
             var treina_Usuario = _mapper.Map<Treina_Usuario>(treina_UsuarioDTO);

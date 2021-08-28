@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Application.Utilities;
 using Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

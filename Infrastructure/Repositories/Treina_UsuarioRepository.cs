@@ -15,16 +15,6 @@ namespace Infrastructure.Repositories
         {
             _context = context;
         }
-        public virtual async Task<Treina_Usuario> GetByNome(string nome)
-        {
-            var obj = await _context.Set<Treina_Usuario>()
-                                    .AsNoTracking()
-                                    .Where(x => x.Usuario == nome)
-                                    .ToListAsync();
-            return obj.FirstOrDefault();
-                                    
-        }
-
         public virtual async Task<string> Auth(Treina_Usuario treina_Usuario)
         {
             var obj = await _context.Set<Treina_Usuario>()

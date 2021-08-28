@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Application.Token;
-using Application.ViewModels;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Context;
@@ -13,13 +9,10 @@ using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Service.DataTransferObject;
@@ -42,6 +35,21 @@ namespace Application
         {
 
             services.AddControllers();
+
+            #region CORS
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
+
+            #endregion
             
             #region Swagger
 
@@ -101,7 +109,6 @@ namespace Application
 
             services.AddSingleton(d => Configuration);
             services.AddDbContext<ManagerContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:USER_MANAGER"]), ServiceLifetime.Transient);
-            services.AddScoped<ITreina_ClienteService, Treina_ClienteService>();
             services.AddScoped<ITreina_ClienteRepository, Treina_ClienteRepository>();
 
             services.AddScoped<ITreina_PropostaService, Treina_PropostaService>();
@@ -168,6 +175,7 @@ namespace Application
 
             app.UseRouting();
 
+            app.UseCors();  // Entre UseHttpsRedirection() e app.UseAuthentication()
 
             app.UseAuthentication();
             app.UseAuthorization();

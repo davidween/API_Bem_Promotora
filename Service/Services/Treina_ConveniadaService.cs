@@ -1,7 +1,5 @@
 using System.Threading.Tasks;
-using AutoMapper;
 using Infrastructure.Interfaces;
-using Service.DataTransferObject;
 using Service.Interfaces;
 
 namespace Service.Services

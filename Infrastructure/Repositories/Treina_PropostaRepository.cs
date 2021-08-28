@@ -46,8 +46,6 @@ namespace Infrastructure.Repositories
                                                    .ToListAsync();
 
             var allTreina_Cliente = await _context.TREINA_CLIENTES
-                                                  //.Where(c => _context.TREINA_PROPOSTAS.Any(p => p.Usuario == usuario))
-                                                  //.Where(c => c.Cpf == _context.TREINA_PROPOSTAS.Select(p => p.Usuario.ToUpper() == usuario.ToUpper()))
                                                   .Where(c => _context.TREINA_PROPOSTAS.Any(p => p.Usuario == usuario && p.Cpf == c.Cpf))
                                                   .OrderBy(c => c.Cpf)
                                                   .AsNoTracking()
