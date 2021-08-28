@@ -1,0 +1,52 @@
+{"Cliente - Proposta" :
+
+      {
+        "treina_Cliente": {
+          "cpf": "01942793243",
+          "nome": "David Sousa",
+          "dt_Nascimento": "2000-08-19T18:32:51.887Z",
+          "genero": "M",
+          "vlr_Salario": 24000.22,
+          "logradouro": "string",
+          "numero_Residencia": "string",
+          "bairro": "string",
+          "cidade": "string",
+          "cep": "string"
+        },
+        "treina_Proposta": {
+          "cpf": "01942793243",
+          "conveniada": "000020",
+          "vlr_Solicitado": 12.22,
+          "prazo": 0,
+          "vlr_Financiado": 12.22,
+          "situacao": "PE",
+          "usuario": "4001MARIA"
+        }
+      }
+
+,
+ "Login - Senha Vencida" :
+
+    {
+      "usuario": "4001MARIA",
+      "senha": "SENHAM"
+    },
+
+    "Login - Senha" :
+
+    {
+      "usuario": "davidween",
+      "senha": "123456"
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
