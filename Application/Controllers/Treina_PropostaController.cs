@@ -78,9 +78,9 @@ namespace Application.Controllers
                 });
             }
 
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500, Responses.ApplicationErrorMessage());
+                return StatusCode(500, e.Message);
             }
         }
 

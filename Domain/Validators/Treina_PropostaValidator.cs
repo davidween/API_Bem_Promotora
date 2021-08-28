@@ -13,7 +13,7 @@ namespace Domain.Validators
 
             RuleFor(x => x.Proposta)
                 .NotNull().WithMessage("A proposta não pode ser nula!!!")
-                .GreaterThanOrEqualTo(1).WithMessage("O número da proposta tem que ser igual ou maior que 1!!!")
+                .GreaterThanOrEqualTo(0).WithMessage("O número da proposta tem que ser igual ou maior que 0!!!")
                 .LessThanOrEqualTo(9999999999).WithMessage("O número da proposta não pode ter mais que 10 dígitos!!!");
 
             RuleFor(x => x.Cpf)

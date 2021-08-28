@@ -10,8 +10,14 @@ namespace Domain.Entities
     public class Treina_Proposta
     {
         [Key]
-        [Column("Proposta", TypeName = "decimal(10,0)")]
-        public decimal Proposta { get; set; }  
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column("Proposta", TypeName = "decimal(10,0)", Order = 1)]
+        public decimal Proposta { get; set; } 
+        /*
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]: Isso significa que o EF gera o campo, pois o banco de dados não gera automaticamente.
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]: Se o próprio banco de dados gera o campo automaticamente.
+        */
 
         [Column("Cpf")]
         public string Cpf { get; set; }
@@ -51,20 +57,18 @@ namespace Domain.Entities
 
         }
 
-        public Treina_Proposta(decimal proposta, string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string observacao, DateTime dt_Situacao, string usuario, string usuario_Atualizacao, DateTime data_Atualizacao)
+        public Treina_Proposta(string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string usuario)
         {
-            Proposta = proposta;
             Cpf = cpf;
             Conveniada = conveniada;
             Vlr_Solicitado = vlr_Solicitado;
             Prazo = prazo;
             Vlr_Financiado = vlr_Financiado;
             Situacao = situacao;
-            Observacao = observacao;
-            Dt_Situacao = dt_Situacao;
+            Dt_Situacao = DateTime.Now;
             Usuario = usuario;
-            Usuario_Atualizacao = usuario_Atualizacao;
-            Data_Atualizacao = data_Atualizacao;
+            Usuario_Atualizacao = "SISTEMA";
+            Data_Atualizacao = DateTime.Now;
             _errors = new List<string>();  // inicia uma lista vazia
         }
 

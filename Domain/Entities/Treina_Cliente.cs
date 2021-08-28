@@ -51,7 +51,7 @@ namespace Domain.Entities
 
         }
 
-        public Treina_Cliente(string cpf, string nome, DateTime dt_Nascimento, string genero, decimal vlr_Salario, string logradouro, string numero_Residencia, string bairro, string cidade, string cep, string usuario_Atualizacao, DateTime data_Atualizacao)
+        public Treina_Cliente(string cpf, string nome, DateTime dt_Nascimento, string genero, decimal vlr_Salario, string logradouro, string numero_Residencia, string bairro, string cidade, string cep)
         {
             Cpf = cpf;
             Nome = nome;
@@ -63,8 +63,8 @@ namespace Domain.Entities
             Bairro = bairro;
             Cidade = cidade;
             Cep = cep;
-            Usuario_Atualizacao = usuario_Atualizacao;
-            Data_Atualizacao = data_Atualizacao;
+            Usuario_Atualizacao = "SISTEMA";
+            Data_Atualizacao = DateTime.Now;
             _errors = new List<string>();  // inicia uma lista vazia
         }
         
