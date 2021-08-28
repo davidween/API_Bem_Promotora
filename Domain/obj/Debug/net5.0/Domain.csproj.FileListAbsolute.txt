@@ -33,3 +33,4 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/obj/Debug/net5.0/Domain.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/obj/Debug/net5.0/ref/Domain.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/obj/Debug/net5.0/Domain.pdb
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Domain/obj/Debug/net5.0/Domain.csproj.AssemblyReference.cache

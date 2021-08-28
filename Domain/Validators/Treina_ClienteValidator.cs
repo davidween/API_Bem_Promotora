@@ -15,7 +15,7 @@ namespace Domain.Validators
             RuleFor(x => x.Cpf)
                 .NotEmpty().WithMessage("O CPF não pode ser vazio!!!")
                 .NotNull().WithMessage("O CPF não pode ser nulo!!!")
-                .Must(IsCpf).WithMessage("O CPF é inválido!!!");
+                .Must(MustFluentValidation.IsCpf).WithMessage("O CPF é inválido!!!");
 
             RuleFor(x => x.Nome)
                 .NotEmpty().WithMessage("O nome não pode ser vazio!!!")
@@ -27,12 +27,12 @@ namespace Domain.Validators
             RuleFor(x => x.Dt_Nascimento)
                 .NotEmpty().WithMessage("A data de nascimento não pode ser vazia!!!")
                 .NotNull().WithMessage("A data de nascimento não pode ser nula")
-                .Must(IsMaiorIdade).WithMessage("O cliente deve ser maior de 18 anos!!!");
+                .Must(MustFluentValidation.IsMaiorIdade).WithMessage("O cliente deve ser maior de 18 anos!!!");
 
             RuleFor(x => x.Genero)
                 .NotEmpty().WithMessage("O gênero não pode ser vazio!!!")
                 .NotNull().WithMessage("O gênero não pode ser nulo!!!")
-                .Must(IsGenero).WithMessage("O gênero é inválido. Somente 'M' ou 'F'!!!");
+                .Must(MustFluentValidation.IsGenero).WithMessage("O gênero é inválido. Somente 'M' ou 'F'!!!");
 
             RuleFor(x => x.Vlr_Salario)
                 .NotEmpty().WithMessage("O salário não pode ser vazio!!!")
@@ -67,70 +67,6 @@ namespace Domain.Validators
             RuleFor(x => x.Data_Atualizacao)
                 .NotEmpty().WithMessage("A data de atualização não pode ser vazia!!!")
                 .NotNull().WithMessage("A data de atualização não pode ser nula!!!");
-        }
-
-        private static bool IsCpf(string cpf)
-	    {
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            string tempCpf;
-            string digito;
-            int soma;
-            int resto;
-
-            cpf = cpf.Trim();
-            cpf = cpf.Replace(".", "").Replace("-", "");
-
-            if (cpf.Length != 11)
-                return false;
-
-            tempCpf = cpf.Substring(0, 9);
-            soma = 0;
-
-            for(int i=0; i<9; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
-
-            resto = soma % 11;
-            if ( resto < 2 )
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            digito = resto.ToString();
-
-            tempCpf = tempCpf + digito;
-
-            soma = 0;
-            for(int i=0; i<10; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
-
-            resto = soma % 11;
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-
-            digito = digito + resto.ToString();
-
-            return cpf.EndsWith(digito);
-	    }
-
-        private static bool IsMaiorIdade(DateTime Dt_Nascimento)
-        {
-            return Dt_Nascimento <= DateTime.Now.AddYears(-18);
-        }
-
-        private static bool IsGenero(string Genero)
-        {
-            if(Genero == "M" || Genero == "F")
-            {
-                return true;
-            }
-
-            else
-            {
-                return false;
-            }
         }
     }
 }
