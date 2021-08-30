@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories
         public async Task<Treina_Cliente> GetByCpf(string cpf)
         {
             var treina_Cliente = await _context.TREINA_CLIENTES
-                                     .Where(x => x.Cpf.ToUpper() == cpf.ToUpper())
+                                     .Where(x => x.Cpf == cpf)
                                      .AsNoTracking()
                                      .ToListAsync();
 

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,8 +24,9 @@ namespace Infrastructure.Context
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Treina_CalculoJuros>()
-                .HasNoKey();
+            modelBuilder.Entity<Treina_CalculoJuros>().HasNoKey();
+            modelBuilder.Entity<Treina_Proposta>().Property( c => c.Proposta ).ValueGeneratedNever();
+     
         }
         
         [DbFunction("F_AUTENTICAR", "dbo")]

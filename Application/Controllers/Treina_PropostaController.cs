@@ -54,9 +54,9 @@ namespace Application.Controllers
                 return StatusCode(400, Responses.DomainErrorMessage(ex.Message, ex.Errors));
             }
             
-            catch(Exception)  // ex para eu ver o erro exato
+            catch(Exception e)  // ex para eu ver o erro exato
             {
-                return StatusCode(500, Responses.ApplicationErrorMessage());
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -138,9 +138,9 @@ namespace Application.Controllers
                 return StatusCode(400, Responses.DomainErrorMessage(ex.Message, ex.Errors));
             }
             
-            catch(Exception)  // ex para eu ver o erro exato
+            catch(Exception e)  // ex para eu ver o erro exato
             {
-                return StatusCode(500, Responses.ApplicationErrorMessage());
+                return StatusCode(500, e.Message);
             }
         }
     }
