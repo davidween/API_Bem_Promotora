@@ -15,7 +15,7 @@ namespace Application.Controllers
         
         [HttpGet]
         [Authorize]
-        [Route("/Endereco/{cep}")]
+        [Route("/api/v1/Endereco/{cep}")]
         public async Task<IActionResult> RecuperarEnderecoPorCep(string cep)
         {
             try

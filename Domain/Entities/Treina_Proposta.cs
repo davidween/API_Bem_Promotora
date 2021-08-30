@@ -57,14 +57,14 @@ namespace Domain.Entities
 
         }
 
-        public Treina_Proposta(string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string usuario)
+        public Treina_Proposta(string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string usuario)
         {
             Cpf = cpf;
             Conveniada = conveniada;
             Vlr_Solicitado = vlr_Solicitado;
             Prazo = prazo;
             Vlr_Financiado = vlr_Financiado;
-            Situacao = situacao;
+            Situacao = "AG";
             Dt_Situacao = DateTime.Now;
             Usuario = usuario;
             Usuario_Atualizacao = "SISTEMA";
