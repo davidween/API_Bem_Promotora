@@ -10,8 +10,7 @@ namespace Domain.Entities
     public class Treina_Proposta
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Column("Proposta", TypeName = "decimal(10,0)", Order = 1)]
+        [Column("Proposta", TypeName = "decimal(10,0)")]
         public decimal Proposta { get; set; } 
         /*
         [DatabaseGenerated(DatabaseGeneratedOption.None)]: Isso significa que o EF gera o campo, pois o banco de dados não gera automaticamente.

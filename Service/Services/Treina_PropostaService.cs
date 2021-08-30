@@ -42,6 +42,8 @@ namespace Service.Services
                 treina_Cliente.Validate();
                 //-------------------
                 var treina_Proposta = _mapper.Map<Treina_Proposta>(compositeObjectDTO.treina_PropostaDTO);
+
+                treina_Proposta.Proposta = await _treina_PropostaRepository.GerarKeyProposta();
                 
                 treina_Proposta.Validate();
                 //--------------------

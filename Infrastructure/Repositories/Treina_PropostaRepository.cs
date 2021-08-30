@@ -27,6 +27,23 @@ namespace Infrastructure.Repositories
             return compositeObject;
         }
 
+        public async Task<decimal> GerarKeyProposta()
+        {
+            var obj = await _context.TREINA_PROPOSTAS
+                                    .OrderByDescending(p => p.Proposta)
+                                    .AsNoTracking()
+                                    .ToListAsync();
+            if(obj.Count <= 0)
+            {
+                return 1;
+            }
+
+            else
+            {
+                return obj.FirstOrDefault().Proposta + 1;
+            } 
+        }
+
         public async Task<Treina_Proposta> GetByCpf(string cpf)
         {
             var treina_Proposta = await _context.TREINA_PROPOSTAS
