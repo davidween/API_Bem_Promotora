@@ -54,33 +54,38 @@ namespace Infrastructure.Repositories
             return treina_Proposta.FirstOrDefault();
         }
 
-         public virtual async Task<List<CompositeObject>> GetAll(string usuario){
-             
-             var allTreina_Proposta = await _context.TREINA_PROPOSTAS
-                                                   .Where(p => p.Usuario.ToUpper() == usuario.ToUpper())
-                                                   .OrderBy(p => p.Cpf)
-                                                   .AsNoTracking()
-                                                   .ToListAsync();
+         public virtual async Task<List<PageList>> GetAll(string usuario)
+         {  
+            var obj = await _context.TREINA_PROPOSTAS
+                                    .Where(x => x.Usuario == usuario)
+                                    .Join(_context.TREINA_CLIENTES, proposta => proposta.Cpf, cliente => cliente.Cpf, (proposta, cliente) => new { proposta, cliente })
+                                    .Join(_context.TREINA_CONVENIADAS, proposta => proposta.proposta.Conveniada, conveniada => conveniada.Conveniada, (proposta, conveniada) => new { proposta, conveniada})
+                                    .Join(_context.TREINA_SITUACAO, proposta => proposta.proposta.proposta.Situacao, situacao => situacao.Situacao, (proposta, situacao) => new { proposta, situacao})
+                                    .Select(x => new { 
+                                        x.proposta.proposta.cliente.Cpf,
+                                        x.proposta.proposta.cliente.Nome,
+                                        x.proposta.proposta.proposta.Proposta,
+                                        x.proposta.conveniada.Descricao,
+                                        x.proposta.proposta.proposta.Vlr_Solicitado,
+                                        x.proposta.proposta.proposta.Prazo,
+                                        x.proposta.proposta.proposta.Vlr_Financiado,
+                                        x.situacao.DescricaoSituacao,
+                                        x.proposta.proposta.proposta.Observacao,
+                                        x.proposta.proposta.proposta.Dt_Situacao,
+                                        x.proposta.proposta.proposta.Usuario 
+                                    })
+                                    .ToListAsync();
+                                    
+            var pagelistall = new List<PageList>();
 
-            var allTreina_Cliente = await _context.TREINA_CLIENTES
-                                                  .Where(c => _context.TREINA_PROPOSTAS.Any(p => p.Usuario == usuario && p.Cpf == c.Cpf))
-                                                  .OrderBy(c => c.Cpf)
-                                                  .AsNoTracking()
-                                                  .ToListAsync();
-
-            var allCompositeObject = new List<CompositeObject>();
-
-            for(int i = 0; i < allTreina_Cliente.Count; i++)
+            foreach (var item in obj)
             {
-                var treina_Cliente = allTreina_Cliente[i];
-                var treina_Proposta = allTreina_Proposta[i];
-                
-                CompositeObject compositeObject = new CompositeObject(treina_Cliente, treina_Proposta);
-                
-                allCompositeObject.Add(compositeObject);
-            }
+                var pagelist = new PageList(item.Cpf, item.Nome, item.Proposta, item.Descricao, item.Vlr_Solicitado, item.Prazo, item.Vlr_Financiado, item.DescricaoSituacao, item.Observacao, item.Dt_Situacao, item.Usuario);
 
-            return allCompositeObject;
+                pagelistall.Add(pagelist);
+            }
+            
+            return pagelistall;
         }
 
         public virtual async Task<CompositeObject> Update(CompositeObject compositeObject)

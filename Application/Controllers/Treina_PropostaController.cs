@@ -91,13 +91,13 @@ namespace Application.Controllers
         {
             try
             {
-                var allCompositeObjectDTO = await _treina_PropostaService.GetAll(usuario);
+                var pagelistall = await _treina_PropostaService.GetAll(usuario);
 
                 return Ok(new ResultViewModel
                 {
                     Message = "Consulta realizada com sucesso!",
                     Success = true,
-                    Data1 = allCompositeObjectDTO,
+                    Data1 = pagelistall,
                     Data2 = null
                 });
             }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain.Entities;
 using Service.DataTransferObject;
 
 namespace Service.Interfaces
@@ -10,7 +11,7 @@ namespace Service.Interfaces
 
         Task<CompositeObjectDTO> Get(string cpf);
 
-        Task<List<CompositeObjectDTO>> GetAll(string usuario);
+        Task<List<PageList>> GetAll(string usuario);
 
         Task<CompositeObjectDTO> Update(CompositeObjectDTO compositeObjectDTO);
     }

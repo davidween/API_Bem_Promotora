@@ -10,7 +10,7 @@ namespace Infrastructure.Interfaces
 
         Task<Treina_Proposta> GetByCpf(string cpf);
 
-        Task<List<CompositeObject>> GetAll(string usuario);
+        Task<List<PageList>> GetAll(string usuario);
 
         Task<CompositeObject> Update(CompositeObject compositeObject);
         Task<decimal> GerarKeyProposta();

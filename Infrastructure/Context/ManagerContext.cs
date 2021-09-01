@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +20,7 @@ namespace Infrastructure.Context
         public virtual DbSet<Treina_Usuario> TREINA_USUARIOS { get; set; }
         public virtual DbSet<Treina_Conveniada> TREINA_CONVENIADAS { get; set; }
         public virtual DbSet<Treina_CalculoJuros> TREINA_CALCULOJUROS { get; set; }
+        public virtual DbSet<Treina_Situacao> TREINA_SITUACAO { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
