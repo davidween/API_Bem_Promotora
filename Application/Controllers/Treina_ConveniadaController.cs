@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Application.Utilities;
 using Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,26 +27,24 @@ namespace Application.Controllers
                 var conveniada = await _treina_ConveniadaService.Get(descricao);
 
                 if(conveniada == null)
-                    return Ok(new ResultViewModel
+                    return Ok(new ResultViewModelConveniada
                     {
                         Message = "Nenhuma conveniada foi encontrado com o nome informado.",
                         Success = true,
-                        Data1 = conveniada,
-                        Data2 = null
+                        Conveniada = conveniada
                     });
 
-                return Ok(new ResultViewModel
+                return Ok(new ResultViewModelConveniada
                 {
                     Message = "Conveniada encontrado com sucesso!",
                     Success = true,
-                    Data1 = conveniada,
-                    Data2 = null
+                    Conveniada = conveniada
                 });
             }
             
-            catch (Exception)
+            catch (Exception e)
             {
-                return StatusCode(500, Responses.ApplicationErrorMessage());
+                return StatusCode(500, e.Message);
             }
         }
     }

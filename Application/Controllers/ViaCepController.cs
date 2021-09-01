@@ -31,18 +31,17 @@ namespace Application.Controllers
                     endereco = JsonConvert.DeserializeObject<Endereco>(responseBody);
 
                     return Ok(
-                    new ResultViewModel
+                    new ResultViewModelCep
                     {
                         Message = "CEP Encontrado!!!",
                         Success = true,
-                        Data1 = endereco,
-                        Data2 = null
+                        Cep = endereco
                     });  // 200
                 }
 
                 else
                 {
-                    return BadRequest(responseBody);  // Refatorar para meu erro !!!
+                    return BadRequest(responseBody);
                 }
             }
                 

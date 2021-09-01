@@ -25,12 +25,11 @@ namespace Application.Controllers
             {
                 var Vlr_Financiado = await _treina_CalculoJurosService.Get(Vlr_Solicitado, Prazo);
 
-                return Ok(new ResultViewModel
+                return Ok(new ResultViewModelJuros
                 {
                     Message = "Valor Finaciado calculado com sucesso!",
                     Success = true,
-                    Data1 = Vlr_Financiado,
-                    Data2 = null
+                    Vlr_Financiado = Vlr_Financiado
                 });
             }
             

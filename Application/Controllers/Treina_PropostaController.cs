@@ -1,10 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Application.Utilities;
 using Application.ViewModels;
 using AutoMapper;
 using Domain.Entities;
-using Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.DataTransferObject;
@@ -49,12 +47,7 @@ namespace Application.Controllers
                     });
             }
 
-            catch(DomainException ex)
-            {
-                return StatusCode(400, Responses.DomainErrorMessage(ex.Message, ex.Errors));
-            }
-            
-            catch(Exception e)  // ex para eu ver o erro exato
+            catch(Exception e) 
             {
                 return StatusCode(500, e.Message);
             }
@@ -93,12 +86,11 @@ namespace Application.Controllers
             {
                 var pagelistall = await _treina_PropostaService.GetAll(usuario);
 
-                return Ok(new ResultViewModel
+                return Ok(new ResultViewModelUnique
                 {
                     Message = "Consulta realizada com sucesso!",
                     Success = true,
-                    Data1 = pagelistall,
-                    Data2 = null
+                    Data1 = pagelistall
                 });
             }
 
@@ -133,11 +125,6 @@ namespace Application.Controllers
                     });
             }
 
-            catch(DomainException ex)
-            {
-                return StatusCode(400, Responses.DomainErrorMessage(ex.Message, ex.Errors));
-            }
-            
             catch(Exception e)  // ex para eu ver o erro exato
             {
                 return StatusCode(500, e.Message);

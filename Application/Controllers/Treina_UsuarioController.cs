@@ -42,16 +42,13 @@ namespace Application.Controllers
 
                 if(usuarioMessage == "Logado!!!")
                 {
-                    return Ok(new ResultViewModel
+                    return Ok(new ResultViewModelUsuario
                     {
                         Message = usuarioMessage,
                         Success = true,
-                        Data1 = new
-                        {
-                            Token = _tokenGenerator.GenerateToken(),
-                            TokenExpires = DateTime.UtcNow.AddHours(int.Parse(_configuration["Jwt:HoursToExpire"]))
-                        }
-                        // Continua mostrando o Data2 ************************Fazer View
+                        Token = _tokenGenerator.GenerateToken(),
+                        TokenExpires = DateTime.UtcNow.AddHours(int.Parse(_configuration["Jwt:HoursToExpire"]))
+                        
                     });
                 }
 
