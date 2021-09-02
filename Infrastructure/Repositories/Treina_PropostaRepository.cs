@@ -27,7 +27,7 @@ namespace Infrastructure.Repositories
             return compositeObject;
         }
 
-        public async Task<decimal> GerarKeyProposta()
+        public async Task<decimal?> GerarKeyProposta()
         {
             var obj = await _context.TREINA_PROPOSTAS
                                     .OrderByDescending(p => p.Proposta)

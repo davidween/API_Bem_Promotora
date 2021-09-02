@@ -8,15 +8,15 @@ namespace Domain.Entities
 
         public string Nome { get; set; }
 
-        public decimal Proposta { get; set; } 
+        public decimal? Proposta { get; set; } 
 
         public string Conveniada { get; set; }  // Descrição
 
-        public decimal Vlr_Solicitado { get; set; }
+        public decimal? Vlr_Solicitado { get; set; }
 
-        public decimal Prazo { get; set; }
+        public decimal? Prazo { get; set; }
 
-        public decimal Vlr_Financiado { get; set; }
+        public decimal? Vlr_Financiado { get; set; }
 
         public string Situacao { get; set; }  // Descrição
 
@@ -31,7 +31,7 @@ namespace Domain.Entities
             
         }
 
-        public PageList(string cpf, string nome, decimal proposta, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string observacao, DateTime dt_Situacao, string usuario)
+        public PageList(string cpf, string nome, decimal? proposta, string conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string situacao, string observacao, DateTime dt_Situacao, string usuario)
         {
             Cpf = cpf;
             Nome = nome;

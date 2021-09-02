@@ -1,8 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Application.Utilities;
 using Application.ViewModels;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.DataTransferObject;
@@ -47,6 +49,11 @@ namespace Application.Controllers
                     });
             }
 
+            catch (DomainException e)
+            {
+                return BadRequest(Responses.DomainErrorMessage(e.Message, e.Errors));
+            }
+
             catch(Exception e) 
             {
                 return StatusCode(500, e.Message);
@@ -69,6 +76,11 @@ namespace Application.Controllers
                     Data1 = compositeObjectDTO.treina_ClienteDTO,
                     Data2 = compositeObjectDTO.treina_PropostaDTO
                 });
+            }
+
+            catch (DomainException e)
+            {
+                return BadRequest(Responses.DomainErrorMessage(e.Message, e.Errors));
             }
 
             catch(Exception e)
@@ -125,7 +137,12 @@ namespace Application.Controllers
                     });
             }
 
-            catch(Exception e)  // ex para eu ver o erro exato
+            catch (DomainException e)
+            {
+                return BadRequest(Responses.DomainErrorMessage(e.Message, e.Errors));
+            }
+
+            catch(Exception e)
             {
                 return StatusCode(500, e.Message);
             }

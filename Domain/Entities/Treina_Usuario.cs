@@ -7,11 +7,11 @@ namespace Domain.Entities
     {
         [Key]
         [Column("Usuario")]
-        [Required(ErrorMessage = "O usuário não pode ser vazio.")]
+        [Required(ErrorMessage = "O usuário não pode ser vazio!!!")]
         public string Usuario { get; set; }
 
         [Column("Senha")]
-        [Required(ErrorMessage = "A senha não pode ser vazia.")]
+        [Required(ErrorMessage = "A senha não pode ser vazia!!!")]
         public string Senha { get; set; }
 
         protected Treina_Usuario()

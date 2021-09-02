@@ -13,6 +13,6 @@ namespace Infrastructure.Interfaces
         Task<List<PageList>> GetAll(string usuario);
 
         Task<CompositeObject> Update(CompositeObject compositeObject);
-        Task<decimal> GerarKeyProposta();
+        Task<decimal?> GerarKeyProposta();
     }
 }

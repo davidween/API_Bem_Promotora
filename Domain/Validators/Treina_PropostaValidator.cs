@@ -34,8 +34,8 @@ namespace Domain.Validators
 
             RuleFor(x => x.Prazo)
                 .NotNull().WithMessage("O prazo não pode ser nulo!!!")
-                .GreaterThanOrEqualTo(0).WithMessage("O prazo tem que ser igual ou maior que 0!!!")
-                .LessThanOrEqualTo(999).WithMessage("O prazo não pode ter mais que 3 dígitos!!!");
+                .GreaterThanOrEqualTo(1).WithMessage("O prazo tem que ser igual ou maior que 1!!!")
+                .LessThanOrEqualTo(99).WithMessage("O prazo não pode ser maior que 99!!!");
 
             RuleFor(x => x.Vlr_Financiado)
                 .NotEmpty().WithMessage("O valor financiado não pode ser vazio!!!")

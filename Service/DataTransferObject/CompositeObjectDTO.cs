@@ -9,6 +9,7 @@ namespace Service.DataTransferObject
         }
 
         public Treina_ClienteDTO treina_ClienteDTO { get; set; }
+        
         public Treina_PropostaDTO treina_PropostaDTO {get; set; }
     }
 }

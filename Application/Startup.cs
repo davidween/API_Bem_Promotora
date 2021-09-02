@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Service.DataTransferObject;
 using Service.Interfaces;
 using Service.Services;
@@ -32,9 +33,15 @@ namespace Application
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {  
+            #region JSON
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
+
+            #endregion
 
             #region CORS
 

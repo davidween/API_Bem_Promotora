@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Domain.Exceptions;
 using Domain.Validators;
 
@@ -17,13 +18,15 @@ namespace Domain.Entities
         public string Nome { get; set; }
 
         [Column("Dt_Nascimento")]
-        public DateTime Dt_Nascimento { get; set; }
+        [JsonIgnore]
+        public DateTime? Dt_Nascimento { get; set; }
 
         [Column("Genero")]
         public string Genero { get; set; }
         
         [Column("Vlr_Salario", TypeName = "decimal(12,2)")]
-        public decimal Vlr_Salario { get; set; }
+        [JsonIgnore]
+        public decimal? Vlr_Salario { get; set; }
 
         [Column("Logradouro")]
         public string Logradouro { get; set; }
@@ -51,7 +54,7 @@ namespace Domain.Entities
 
         }
 
-        public Treina_Cliente(string cpf, string nome, DateTime dt_Nascimento, string genero, decimal vlr_Salario, string logradouro, string numero_Residencia, string bairro, string cidade, string cep)
+        public Treina_Cliente(string cpf, string nome, DateTime? dt_Nascimento, string genero, decimal? vlr_Salario, string logradouro, string numero_Residencia, string bairro, string cidade, string cep)
         {
             Cpf = cpf;
             Nome = nome;

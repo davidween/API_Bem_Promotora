@@ -63,7 +63,12 @@ namespace Domain.Validators
             }
         }
 
-        public static bool IsMaiorIdade(DateTime Dt_Nascimento)
+        public static bool IsIdade(DateTime? Dt_Nascimento)
+        {
+            return Dt_Nascimento >= DateTime.Now.AddYears(-80);
+        }
+
+        public static bool IsMaiorIdade(DateTime? Dt_Nascimento)
         {
             return Dt_Nascimento <= DateTime.Now.AddYears(-18);
         }
@@ -80,6 +85,5 @@ namespace Domain.Validators
                 return false;
             }
         }
-        
     }
 }

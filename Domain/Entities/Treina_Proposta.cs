@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Exceptions;
 using Domain.Validators;
+using Newtonsoft.Json;
 
 namespace Domain.Entities
 {
@@ -11,12 +12,8 @@ namespace Domain.Entities
     {
         [Key]
         [Column("Proposta", TypeName = "decimal(10,0)")]
-        public decimal Proposta { get; set; } 
-        /*
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]: Isso significa que o EF gera o campo, pois o banco de dados não gera automaticamente.
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]: Se o próprio banco de dados gera o campo automaticamente.
-        */
+        [JsonIgnore]
+        public decimal? Proposta { get; set; } 
 
         [Column("Cpf")]
         public string Cpf { get; set; }
@@ -24,14 +21,17 @@ namespace Domain.Entities
         [Column("Conveniada")]
         public string Conveniada { get; set; }
 
+        [JsonIgnore]
         [Column("Vlr_Solicitado", TypeName = "decimal(12,2)")]
-        public decimal Vlr_Solicitado { get; set; }
+        public decimal? Vlr_Solicitado { get; set; }
 
         [Column("Prazo", TypeName = "decimal(3,0)")]
-        public decimal Prazo { get; set; }
+        [JsonIgnore]
+        public decimal? Prazo { get; set; }
 
         [Column("Vlr_Financiado", TypeName = "decimal(12,2)")]
-        public decimal Vlr_Financiado { get; set; }
+        [JsonIgnore]
+        public decimal? Vlr_Financiado { get; set; }
 
         [Column("Situacao")]
         public string Situacao { get; set; }
@@ -56,7 +56,7 @@ namespace Domain.Entities
 
         }
 
-        public Treina_Proposta(string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string usuario)
+        public Treina_Proposta(string cpf, string conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string usuario)
         {
             Cpf = cpf;
             Conveniada = conveniada;

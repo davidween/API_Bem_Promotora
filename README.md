@@ -37,6 +37,7 @@ Criar pasta CRUD_DOTNET
         * dotnet add package Microsoft.AspNet.WebApi.Client
         * dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
         * dotnet add package Microsoft.AspNetCore.Authentication.OpenIdConnect
+        * dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
     
 
     - dotnet add Infrastructure/Infrastructure.csproj reference Domain/Domain.csproj

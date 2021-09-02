@@ -27,7 +27,8 @@ namespace Domain.Validators
             RuleFor(x => x.Dt_Nascimento)
                 .NotEmpty().WithMessage("A data de nascimento não pode ser vazia!!!")
                 .NotNull().WithMessage("A data de nascimento não pode ser nula")
-                .Must(MustFluentValidation.IsMaiorIdade).WithMessage("O cliente deve ser maior de 18 anos!!!");
+                .Must(MustFluentValidation.IsMaiorIdade).WithMessage("O cliente deve ser maior de 18 anos!!!")
+                .Must(MustFluentValidation.IsIdade).WithMessage("Idade Inválida!!!");
 
             RuleFor(x => x.Genero)
                 .NotEmpty().WithMessage("O gênero não pode ser vazio!!!")
@@ -58,7 +59,9 @@ namespace Domain.Validators
 
             RuleFor(x => x.Cep)
                 .NotEmpty().WithMessage("O CEP não pode ser vazio!!!")
-                .NotNull().WithMessage("O CEP não pode ser nulo!!!");
+                .NotNull().WithMessage("O CEP não pode ser nulo!!!")
+                .MinimumLength(8).WithMessage("O Cep é inválido!!!")
+                .MaximumLength(8).WithMessage("O Cep é inválido!!!");
 
             RuleFor(x => x.Usuario_Atualizacao)
                 .NotEmpty().WithMessage("O usuário não pode ser vazio!!!")
