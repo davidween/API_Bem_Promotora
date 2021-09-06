@@ -22,7 +22,16 @@ namespace Service.Services
         {
             var Vlr_Juros = await _treina_CalculoJurosRepository.Get(Vlr_Solicitado, Prazo);
 
-            var Vlr_Financiado = (double)Vlr_Solicitado * Math.Pow((double)(1 + Vlr_Juros), (double)Prazo);
+            var Vlr_Financiado = CalcularJuros(Vlr_Solicitado, Prazo, Vlr_Juros);
+            
+            return Vlr_Financiado;
+        }
+
+        public static decimal CalcularJuros(decimal Vlr_Solicitado, decimal Prazo, decimal Vlr_Juros)
+        {
+            var Vlr_Financiado =  (double)Vlr_Solicitado * Math.Pow((double)(1 + Vlr_Juros), (double)Prazo);
+
+            return (decimal)Math.Round(Vlr_Financiado, 2);
 
             /*    
             A = P * (1 + i) ^ t
@@ -34,8 +43,6 @@ namespace Service.Services
                 i = Taxa de juros;
                 t = É o tempo do investimento.
             */
-            
-            return (decimal)Math.Round(Vlr_Financiado, 2);
         }
     }
 }
