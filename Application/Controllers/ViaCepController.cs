@@ -11,7 +11,12 @@ namespace Application.Controllers
     [ApiController]
     public class ViaCepController : ControllerBase
     {
-        public static HttpClient client = new HttpClient();
+        private readonly HttpClient _httpClient;
+
+        public ViaCepController(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
         
         [HttpGet]
         [Authorize]
@@ -22,7 +27,7 @@ namespace Application.Controllers
             {
                 Endereco endereco = null;
                 
-                HttpResponseMessage response = await client.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
+                HttpResponseMessage response = await _httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
 
                 var responseBody = await response.Content.ReadAsStringAsync();
 

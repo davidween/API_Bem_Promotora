@@ -114,6 +114,8 @@ namespace Application
 
             #region DI
 
+            services.AddHttpClient();
+
             services.AddSingleton(d => Configuration);
             services.AddDbContext<ManagerContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:USER_MANAGER"]), ServiceLifetime.Transient);
             services.AddScoped<ITreina_ClienteRepository, Treina_ClienteRepository>();
