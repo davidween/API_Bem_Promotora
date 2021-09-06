@@ -139,6 +139,7 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/appsettings.json
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/mono_crash.21acb2c211.0.json
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/mono_crash.21acb2c4bb.0.json
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/mono_crash.21acb2c4bb.1.json
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Application
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Application.deps.json
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Application.runtimeconfig.json

@@ -64,7 +64,7 @@ namespace Infrastructure.Repositories
              {
                  await _connectionString.OpenAsync();
 
-                var query = @"SELECT C.CPF , C.NOME, P.CPF , P.PROPOSTA, CO.CONVENIADA, P.VLR_SOLICITADO, P.PRAZO , P.VLR_FINANCIADO , S.SITUACAO, P.OBSERVACAO , P.DT_SITUACAO , P.USUARIO
+                var query = @"SELECT C.CPF , C.NOME, P.PROPOSTA, CO.DESCRICAO AS DESCRICAO_CONVENIADA, P.VLR_SOLICITADO, P.PRAZO , P.VLR_FINANCIADO , S.DESCRICAO AS DESCRICAO_SITUACAO, P.OBSERVACAO , P.DT_SITUACAO , P.USUARIO
                                 FROM TREINA_PROPOSTAS AS P
                                 JOIN TREINA_CLIENTES AS C ON C.CPF = P.CPF 
                                 JOIN TREINA_SITUACAO AS S ON P.SITUACAO = S.SITUACAO 
@@ -72,6 +72,8 @@ namespace Infrastructure.Repositories
                                 WHERE P.USUARIO = @usuario;";
 
                 var arrayPageList = await _connectionString.QueryAsync<PageList>(query, new { usuario = usuario});
+
+                
 
                 return arrayPageList.ToList();
             }

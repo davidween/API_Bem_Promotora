@@ -10,7 +10,7 @@ namespace Domain.Entities
 
         public decimal? Proposta { get; set; } 
 
-        public string Conveniada { get; set; }  // Descrição
+        public string Descricao_Conveniada { get; set; }  // Descrição
 
         public decimal? Vlr_Solicitado { get; set; }
 
@@ -18,7 +18,7 @@ namespace Domain.Entities
 
         public decimal? Vlr_Financiado { get; set; }
 
-        public string Situacao { get; set; }  // Descrição
+        public string Descricao_Situacao { get; set; }  // Descrição
 
         public string Observacao { get; set; }
 
@@ -31,16 +31,16 @@ namespace Domain.Entities
             
         }
 
-        public PageList(string cpf, string nome, decimal? proposta, string conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string situacao, string observacao, DateTime dt_Situacao, string usuario)
+        public PageList(string cpf, string nome, decimal? proposta, string descricao_conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string descricao_situacao, string observacao, DateTime dt_Situacao, string usuario)
         {
             Cpf = cpf;
             Nome = nome;
             Proposta = proposta;
-            Conveniada = conveniada;
+            Descricao_Conveniada = descricao_conveniada;
             Vlr_Solicitado = vlr_Solicitado;
             Prazo = prazo;
             Vlr_Financiado = vlr_Financiado;
-            Situacao = situacao;
+            Descricao_Situacao = descricao_situacao;
             Observacao = observacao;
             Dt_Situacao = dt_Situacao;
             Usuario = usuario;

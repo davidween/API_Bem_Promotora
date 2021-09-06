@@ -70,9 +70,9 @@ namespace Service.Services
 
         public async Task<List<PageList>> GetAll(string usuario)
         {
-            var pagelistall = await _treina_PropostaRepository.GetAll(usuario);
+            var arrayPageList = await _treina_PropostaRepository.GetAll(usuario);
 
-            return pagelistall;
+            return arrayPageList;
         }
 
         public async Task<CompositeObjectDTO> Update(CompositeObjectDTO compositeObjectDTO)
