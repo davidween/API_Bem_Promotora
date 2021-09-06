@@ -5,11 +5,13 @@ Criar pasta CRUD_DOTNET
     - dotnet new classlib --output Service
     - dotnet new classlib --output Domain
     - dotnet new classlib --output Infrastructure
+    - dotnet new xunit --output Tests
 
     - dotnet sln add Application\
     - dotnet sln add Service\
     - dotnet sln add Domain\
     - dotnet sln add Infrastructure\
+    - dotnet sln add ./Tests/Tests.csproj
 
     - dotnet sln list
     - git push
@@ -49,4 +51,4 @@ Criar pasta CRUD_DOTNET
     - dotnet add Application/Application.csproj reference Infrastructure/Infrastructure.csproj  {Tentar Retirar}
     - dotnet add Application/Application.csproj reference Service/Service.csproj
     - dotnet add Application/Application.csproj reference Domain/Domain.csproj
-    
+    - dotnet add ./Tests/Tests.csproj reference ./Service/Service.csproj

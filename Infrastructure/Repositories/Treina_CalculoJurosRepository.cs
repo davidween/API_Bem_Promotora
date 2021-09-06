@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Infrastructure.Context;
 using Infrastructure.Interfaces;
@@ -21,20 +20,7 @@ namespace Infrastructure.Repositories
                                     .AsNoTracking()
                                     .ToListAsync();
 
-            /*    
-            A = P * (1 + i) ^ t
-
-            Para entender melhor a formula segue a explicação de cada variável:
-
-                A = Valor final ou seja o resultado que você terá;
-                P = Valor inicial que depositado;
-                i = Taxa de juros;
-                t = É o tempo do investimento.
-            */
-
-            var Vlr_Financiado = (double)Vlr_Solicitado * Math.Pow((double)(1 + obj[0].Vlr_Juros), (double)Prazo);
-
-            return (decimal)Math.Round(Vlr_Financiado, 2);
+            return obj[0].Vlr_Juros;
         }
     }
 }
