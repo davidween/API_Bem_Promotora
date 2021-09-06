@@ -135,6 +135,8 @@ namespace Application
             services.AddScoped<ITreina_SituacaoService, Treina_SituacaoService>();
             services.AddScoped<ITreina_SituacaoRepository, Treina_SituacaoRepository>();
 
+            services.AddScoped<IViaCepService, ViaCepService>();
+
             services.AddScoped<ITokenGenerator, TokenGenerator>();
 
             // sevices.AddTransient<> 

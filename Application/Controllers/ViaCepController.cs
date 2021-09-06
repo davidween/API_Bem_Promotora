@@ -1,21 +1,26 @@
+using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Application.ViewModels;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using Service.Interfaces;
+using Service.Services;
 
 namespace Application.Controllers
 {
     [ApiController]
     public class ViaCepController : ControllerBase
     {
-        private readonly HttpClient _httpClient;
+        private readonly IViaCepService _viaCepService;
 
-        public ViaCepController(HttpClient httpClient)
+        public ViaCepController(IViaCepService viaCepService)
         {
-            _httpClient = httpClient;
+            _viaCepService = viaCepService;
         }
         
         [HttpGet]
@@ -25,34 +30,20 @@ namespace Application.Controllers
         {
             try
             {
-                Endereco endereco = null;
-                
-                HttpResponseMessage response = await _httpClient.GetAsync($"https://viacep.com.br/ws/{cep}/json/");
+                var endereco = await _viaCepService.RecuperarEnderecoPorCep(cep);
 
-                var responseBody = await response.Content.ReadAsStringAsync();
-
-                if (response.IsSuccessStatusCode)
-                {
-                    endereco = JsonConvert.DeserializeObject<Endereco>(responseBody);
-
-                    return Ok(
+                return Ok(
                     new ResultViewModelCep
                     {
                         Message = "CEP Encontrado!!!",
                         Success = true,
                         Cep = endereco
                     });  // 200
-                }
-
-                else
-                {
-                    return BadRequest(responseBody);
-                }
             }
-                
-            catch
+
+            catch(Exception e)
             {
-                return NotFound();  // 404
+                return BadRequest(e.Message);
             }    
         }  
     }
