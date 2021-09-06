@@ -96,13 +96,13 @@ namespace Application.Controllers
         {
             try
             {
-                var pagelistall = await _treina_PropostaService.GetAll(usuario);
+                var arrayPageList = await _treina_PropostaService.GetAll(usuario);
 
                 return Ok(new ResultViewModelUnique
                 {
                     Message = "Consulta realizada com sucesso!",
                     Success = true,
-                    Data1 = pagelistall
+                    Data1 = arrayPageList
                 });
             }
 

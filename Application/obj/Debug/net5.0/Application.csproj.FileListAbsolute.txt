@@ -147,6 +147,7 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/ref/Application.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Application.pdb
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/AutoMapper.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Dapper.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/FluentValidation.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/System.Net.Http.Formatting.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Application/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

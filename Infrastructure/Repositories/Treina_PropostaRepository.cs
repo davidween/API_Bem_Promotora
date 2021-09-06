@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Domain.Entities;
 using Infrastructure.Context;
 using Infrastructure.Interfaces;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
@@ -11,10 +13,12 @@ namespace Infrastructure.Repositories
     public class Treina_PropostaRepository : ITreina_PropostaRepository
     {
         private readonly ManagerContext _context;
+        private readonly SqlConnection _connectionString;
 
         public Treina_PropostaRepository(ManagerContext context)
         {
             _context = context;
+            _connectionString = (SqlConnection)_context.Database.GetDbConnection();
         }
 
         public virtual async Task<CompositeObject> Create(CompositeObject compositeObject)
@@ -55,7 +59,25 @@ namespace Infrastructure.Repositories
         }
 
          public virtual async Task<List<PageList>> GetAll(string usuario)
-         {  
+         {
+             using (_connectionString)
+             {
+                 await _connectionString.OpenAsync();
+
+                var query = @"SELECT C.CPF , C.NOME, P.CPF , P.PROPOSTA, CO.CONVENIADA, P.VLR_SOLICITADO, P.PRAZO , P.VLR_FINANCIADO , S.SITUACAO, P.OBSERVACAO , P.DT_SITUACAO , P.USUARIO
+                                FROM TREINA_PROPOSTAS AS P
+                                JOIN TREINA_CLIENTES AS C ON C.CPF = P.CPF 
+                                JOIN TREINA_SITUACAO AS S ON P.SITUACAO = S.SITUACAO 
+                                JOIN TREINA_CONVENIADAS AS CO ON P.CONVENIADA = CO.CONVENIADA 
+                                WHERE P.USUARIO = @usuario;";
+
+                var arrayPageList = await _connectionString.QueryAsync<PageList>(query, new { usuario = usuario});
+
+                return arrayPageList.ToList();
+            }
+             
+            /* // Usando o Entity Framework
+
             var obj = await _context.TREINA_PROPOSTAS
                                     .Where(x => x.Usuario == usuario)
                                     .Join(_context.TREINA_CLIENTES, proposta => proposta.Cpf, cliente => cliente.Cpf, (proposta, cliente) => new { proposta, cliente })
@@ -76,16 +98,18 @@ namespace Infrastructure.Repositories
                                     })
                                     .ToListAsync();
                                     
-            var pagelistall = new List<PageList>();
+            var arrayPageList = new List<PageList>();
+            
 
             foreach (var item in obj)
             {
-                var pagelist = new PageList(item.Cpf, item.Nome, item.Proposta, item.Descricao, item.Vlr_Solicitado, item.Prazo, item.Vlr_Financiado, item.DescricaoSituacao, item.Observacao, item.Dt_Situacao, item.Usuario);
+                var pageList = new PageList(item.Cpf, item.Nome, item.Proposta, item.Descricao, item.Vlr_Solicitado, item.Prazo, item.Vlr_Financiado, item.DescricaoSituacao, item.Observacao, item.Dt_Situacao, item.Usuario);
 
-                pagelistall.Add(pagelist);
+                arrayPageList.Add(pageList);
             }
             
-            return pagelistall;
+            return arrayPageList;
+            */
         }
 
         public virtual async Task<CompositeObject> Update(CompositeObject compositeObject)

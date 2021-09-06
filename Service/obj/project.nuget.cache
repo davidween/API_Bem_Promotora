@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "+tO/mzuF/JurO+2/ORj7uT4QzCAVg3qFUkHCiAHmW6Mz1wclTqXDmNUYJACOeGAKzl6lkGOZx3J1CylYXA47JQ==",
+  "dgSpecHash": "bbfTiSvPl/2d3qtTeM0OEm1linxd1muRiPCq9JmYS0IqG8BznRnl24vLWtR1LF4jCVBh9yS+yrqK2Mf7ZYS+Xg==",
   "success": true,
   "projectFilePath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Service/Service.csproj",
   "expectedPackageFiles": [
     "/home/m-david/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/home/m-david/.nuget/packages/dapper/2.0.90/dapper.2.0.90.nupkg.sha512",
     "/home/m-david/.nuget/packages/fluentvalidation/10.3.0/fluentvalidation.10.3.0.nupkg.sha512",
     "/home/m-david/.nuget/packages/microsoft.aspnetcore.jsonpatch/5.0.9/microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512",
     "/home/m-david/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/5.0.9/microsoft.aspnetcore.mvc.newtonsoftjson.5.0.9.nupkg.sha512",

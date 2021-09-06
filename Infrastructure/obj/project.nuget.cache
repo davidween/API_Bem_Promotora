@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "U/xprmBnOocTjNjmL4qpe8RbMQpxQkz4oliqX7vTw3mJHtH3G07piL8f/O10fx+bzpDDSw1qV6H+DsZaJ8tO7Q==",
+  "dgSpecHash": "5fArRbVbBHjF46kfRH8cqCR5bxnwNbQlesnGeDrrDffSeNNQwFSSpvtIn6HiQl3OI27xnBsK/IaMX3ttpFqfpg==",
   "success": true,
   "projectFilePath": "/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Infrastructure/Infrastructure.csproj",
   "expectedPackageFiles": [
+    "/home/m-david/.nuget/packages/dapper/2.0.90/dapper.2.0.90.nupkg.sha512",
     "/home/m-david/.nuget/packages/fluentvalidation/10.3.0/fluentvalidation.10.3.0.nupkg.sha512",
     "/home/m-david/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/m-david/.nuget/packages/microsoft.aspnetcore.jsonpatch/5.0.9/microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512",

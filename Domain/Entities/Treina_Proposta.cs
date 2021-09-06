@@ -56,8 +56,9 @@ namespace Domain.Entities
 
         }
 
-        public Treina_Proposta(string cpf, string conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string usuario)
+        public Treina_Proposta(decimal? proposta, string cpf, string conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string usuario)
         {
+            Proposta = proposta;
             Cpf = cpf;
             Conveniada = conveniada;
             Vlr_Solicitado = vlr_Solicitado;

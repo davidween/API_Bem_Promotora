@@ -26,6 +26,7 @@ Criar pasta CRUD_DOTNET
         * dotnet add package Microsoft.EntityFrameworkCore.SqlServer
         * dotnet add package Microsoft.EntityFrameworkCore.Design
         * dotnet add package Microsoft.EntityFrameworkCore.Tools
+        * dotnet add package Dapper --version 2.0.90
 
     - Pasta Service
         * Criar Pastas { DataTransferObject, Services, Interfaces }
