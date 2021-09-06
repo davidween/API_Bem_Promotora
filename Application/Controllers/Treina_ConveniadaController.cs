@@ -19,26 +19,26 @@ namespace Application.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("/api/v1/treina_conveniada/get/{descricao}")]
-        public async Task<IActionResult> Get(string descricao)
+        [Route("/api/v1/treina_conveniada/get")]
+        public async Task<IActionResult> Get()
         {
             try
             {
-                var conveniada = await _treina_ConveniadaService.Get(descricao);
+                var conveniadas = await _treina_ConveniadaService.Get();
 
-                if(conveniada == null)
+                if(conveniadas == null)
                     return Ok(new ResultViewModelConveniada
                     {
                         Message = "Nenhuma conveniada foi encontrado com o nome informado.",
                         Success = true,
-                        Conveniada = conveniada
+                        Conveniada = conveniadas
                     });
 
                 return Ok(new ResultViewModelConveniada
                 {
-                    Message = "Conveniada encontrado com sucesso!",
+                    Message = "Conveniadas encontradas com sucesso!",
                     Success = true,
-                    Conveniada = conveniada
+                    Conveniada = conveniadas
                 });
             }
             

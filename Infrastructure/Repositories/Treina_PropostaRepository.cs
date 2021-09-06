@@ -60,7 +60,7 @@ namespace Infrastructure.Repositories
 
          public virtual async Task<List<PageList>> GetAll(string usuario)
          {
-             using (_connectionString)
+             using (_connectionString)  // Usando DAPPER
              {
                  await _connectionString.OpenAsync();
 

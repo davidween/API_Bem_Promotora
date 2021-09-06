@@ -130,6 +130,9 @@ namespace Application
             services.AddScoped<ITreina_CalculoJurosService, Treina_CalculoJurosService>();
             services.AddScoped<ITreina_CalculoJurosRepository, Treina_CalculoJurosRepository>();
 
+            services.AddScoped<ITreina_SituacaoService, Treina_SituacaoService>();
+            services.AddScoped<ITreina_SituacaoRepository, Treina_SituacaoRepository>();
+
             services.AddScoped<ITokenGenerator, TokenGenerator>();
 
             // sevices.AddTransient<> 

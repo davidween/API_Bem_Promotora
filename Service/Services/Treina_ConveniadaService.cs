@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain.Entities;
 using Infrastructure.Interfaces;
 using Service.Interfaces;
 
@@ -11,11 +13,11 @@ namespace Service.Services
         {
             _treina_ConveniadaRepository = treina_ConveniadaRepository;
         }
-        public async Task<string> Get(string descricao)
+        public async Task<List<Treina_Conveniada>> Get()
         {
-            var conveniada = await _treina_ConveniadaRepository.GetByDescricao(descricao);
+            var conveniadas = await _treina_ConveniadaRepository.Get();
 
-            return conveniada;
+            return conveniadas;
         }
     }
 }
