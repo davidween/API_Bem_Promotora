@@ -6,6 +6,7 @@ Criar pasta CRUD_DOTNET
     - dotnet new classlib --output Domain
     - dotnet new classlib --output Infrastructure
     - dotnet new xunit --output Tests
+    - dotnet new console --output MicroServices
 
     - dotnet sln add Application\
     - dotnet sln add Service\
@@ -33,6 +34,8 @@ Criar pasta CRUD_DOTNET
     - Pasta Service
         * Criar Pastas { DataTransferObject, Services, Interfaces }
         * dotnet add package automapper
+        * dotnet add package MassTransit --version 7.2.3-develop.226
+        * dotnet add package MassTransit.RabbitMQ --version 7.2.3-develop.226
 
     - Pasta Application
         * Criar Pastas { ViewModels, Utilities, Token }
@@ -41,6 +44,13 @@ Criar pasta CRUD_DOTNET
         * dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
         * dotnet add package Microsoft.AspNetCore.Authentication.OpenIdConnect
         * dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+        * dotnet add package MassTransit --version 7.2.3-develop.226
+        * dotnet add package MassTransit.RabbitMQ --version 7.2.3-develop.226
+        * dotnet add package MassTransit.AspNetCore --version 7.2.3-develop.226
+
+    - Pasta MicroServices
+        * dotnet add package MassTransit --version 7.2.3-develop.226
+        * dotnet add package MassTransit.RabbitMQ --version 7.2.3-develop.226
     
 
     - dotnet add Infrastructure/Infrastructure.csproj reference Domain/Domain.csproj

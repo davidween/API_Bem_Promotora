@@ -62,7 +62,7 @@ namespace Infrastructure.Repositories
          {
              using (_connectionString)  // Usando DAPPER
              {
-                 await _connectionString.OpenAsync();
+                await _connectionString.OpenAsync();
 
                 var query = @"SELECT C.CPF , C.NOME, P.PROPOSTA, CO.DESCRICAO AS DESCRICAO_CONVENIADA, P.VLR_SOLICITADO, P.PRAZO , P.VLR_FINANCIADO , S.DESCRICAO AS DESCRICAO_SITUACAO, P.OBSERVACAO , P.DT_SITUACAO , P.USUARIO
                                 FROM TREINA_PROPOSTAS AS P

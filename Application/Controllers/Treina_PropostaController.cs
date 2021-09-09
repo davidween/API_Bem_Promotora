@@ -17,11 +17,13 @@ namespace Application.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ITreina_PropostaService _treina_PropostaService;
+        private readonly IFilaService _filaService;
 
-        public Treina_PropostaController(IMapper mapper, ITreina_PropostaService treina_PropostaService)
+        public Treina_PropostaController(IMapper mapper, ITreina_PropostaService treina_PropostaService, IFilaService filaService)
         {
             _mapper = mapper;
             _treina_PropostaService = treina_PropostaService;
+            _filaService = filaService;
         }
 
         [HttpPost]
@@ -39,6 +41,8 @@ namespace Application.Controllers
 
                 var compositeObjectCreated = await _treina_PropostaService.Create(compositeObjectDTO);
 
+                await _filaService.Enviar(compositeObjectCreated.treina_PropostaDTO.Proposta, compositeObjectCreated.treina_ClienteDTO.Dt_Nascimento, compositeObjectCreated.treina_PropostaDTO.Prazo);
+            
                 return Ok(
                     new ResultViewModel
                     {

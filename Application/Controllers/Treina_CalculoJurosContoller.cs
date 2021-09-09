@@ -7,6 +7,7 @@ using Service.Interfaces;
 
 namespace Application.Controllers
 {
+    [ApiController]
     public class Treina_CalculoJurosContoller : ControllerBase
     {
         private readonly ITreina_CalculoJurosService _treina_CalculoJurosService;

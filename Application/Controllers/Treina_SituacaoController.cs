@@ -7,6 +7,7 @@ using Service.Interfaces;
 
 namespace Application.Controllers
 {
+    [ApiController]
     public class Treina_SituacaoController : ControllerBase
     {
         private readonly ITreina_SituacaoService _treina_SituacaoService;

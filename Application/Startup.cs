@@ -6,6 +6,7 @@ using Domain.Entities;
 using Infrastructure.Context;
 using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -99,6 +100,22 @@ namespace Application
 
             #endregion
 
+            #region RabbitMQ
+
+            services.AddMassTransit(x =>
+            {
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
+                {
+                    config.Host(new Uri($"rabbitmq://localhost"), host =>
+                    {
+                        host.Username("guest");  // padrão
+                        host.Password("guest");
+                    });
+                }));
+            });
+
+            #endregion
+
             #region AutoMapper
 
             var autoMapperConfig = new MapperConfiguration(cfg =>
@@ -134,6 +151,8 @@ namespace Application
 
             services.AddScoped<ITreina_SituacaoService, Treina_SituacaoService>();
             services.AddScoped<ITreina_SituacaoRepository, Treina_SituacaoRepository>();
+
+            services.AddScoped<IFilaService, FilaService>();
 
             services.AddScoped<IViaCepService, ViaCepService>();
 
