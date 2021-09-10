@@ -5,6 +5,6 @@ namespace Service.Interfaces
 {
     public interface IFilaService
     {
-        Task Enviar(decimal proposta, DateTime data_nascimento, decimal prazo);
+        Task Enviar(decimal proposta, DateTime data_nascimento, decimal prazo, string conveniada, decimal vlr_solicitado);
     }
 }

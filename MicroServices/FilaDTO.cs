@@ -9,5 +9,9 @@ namespace Service.DataTransferObject  // Mesmo namespace e class name para encon
         public DateTime Data_Nascimento { get; set; }
 
         public decimal Prazo { get; set; }
+
+        public string Conveniada { get; set; }
+
+        public decimal Vlr_Solicitado { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using GreenPipes;
 using MassTransit;
 
@@ -8,37 +9,49 @@ namespace MicroServices
     class Program
     {
         private static readonly AutoResetEvent _closing = new AutoResetEvent(false);
-
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var bus = Bus.Factory.CreateUsingRabbitMq(config =>
+            var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
                         {
-                            config.Host(new Uri($"rabbitmq://queue"), host =>
+                            config.Host(new Uri($"rabbitmq://localhost"), host =>
                             {
-                                host.Username("guest");
+                                host.Username("guest");  // padrão
                                 host.Password("guest");
                             });
 
-                            config.UseCircuitBreaker(cb =>
-                            {
-                                cb.TrackingPeriod = TimeSpan.FromMinutes(1);
-                                cb.TripThreshold = 15;
-                                cb.ActiveThreshold = 10;
-                                cb.ResetInterval = TimeSpan.FromMinutes(5);
-                            });
-
-                            config.ReceiveEndpoint("recomendacao.imagem", e =>
+                            config.ReceiveEndpoint("fila-propostas", e =>
                             {
                                 e.UseRetry(r => r.Interval(5, TimeSpan.FromSeconds(1)));
                                 e.Consumer<ProcessarSituacaoProposta>();
                             });
                         });
 
-            bus.Start();
+            await busControl.StartAsync();
 
-            Console.WriteLine("servico iniciado");
+            Console.WriteLine("Servico Iniciado");
 
             _closing.WaitOne();
+
+            /*
+            try
+            {
+                await busControl.StartAsync();
+
+                await Task.Run(() =>
+                {
+                    Console.WriteLine("Iniciado. Precione ENTER para sair.");
+                    Console.ReadLine();
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                await busControl.StopAsync();
+            }*/
         }
     }
 }

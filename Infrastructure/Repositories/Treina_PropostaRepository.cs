@@ -73,8 +73,6 @@ namespace Infrastructure.Repositories
 
                 var arrayPageList = await _connectionString.QueryAsync<PageList>(query, new { usuario = usuario});
 
-                
-
                 return arrayPageList.ToList();
             }
              

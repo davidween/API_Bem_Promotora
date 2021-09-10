@@ -16,13 +16,15 @@ namespace Service.Services
             _busControl = busControl;
         }
 
-        public async Task Enviar(decimal proposta, DateTime data_nascimento, decimal prazo)
+        public async Task Enviar(decimal proposta, DateTime data_nascimento, decimal prazo, string conveniada, decimal vlr_solicitado)
         {
             await _busControl.Publish(new FilaDTO
             {
                 Proposta = proposta,
                 Data_Nascimento = data_nascimento,
-                Prazo = prazo
+                Prazo = prazo,
+                Conveniada = conveniada,
+                Vlr_Solicitado = vlr_solicitado
             });
         }
     }

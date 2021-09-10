@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.90, )"
+            },
             "MassTransit": {
               "target": "Package",
               "version": "[7.2.3-develop.226, )"
@@ -45,6 +49,10 @@
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[7.2.3-develop.226, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.0.0-preview1.21237.2, )"
             }
           },
           "imports": [

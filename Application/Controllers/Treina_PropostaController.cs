@@ -41,7 +41,11 @@ namespace Application.Controllers
 
                 var compositeObjectCreated = await _treina_PropostaService.Create(compositeObjectDTO);
 
-                await _filaService.Enviar(compositeObjectCreated.treina_PropostaDTO.Proposta, compositeObjectCreated.treina_ClienteDTO.Dt_Nascimento, compositeObjectCreated.treina_PropostaDTO.Prazo);
+                await _filaService.Enviar(compositeObjectCreated.treina_PropostaDTO.Proposta, 
+                                          compositeObjectCreated.treina_ClienteDTO.Dt_Nascimento, 
+                                          compositeObjectCreated.treina_PropostaDTO.Prazo, 
+                                          compositeObjectCreated.treina_PropostaDTO.Conveniada, 
+                                          compositeObjectCreated.treina_PropostaDTO.Vlr_Solicitado);
             
                 return Ok(
                     new ResultViewModel
@@ -129,15 +133,21 @@ namespace Application.Controllers
 
                 var compositeObjectDTO = new CompositeObjectDTO(treina_clienteDTO, treina_propostaDTO);
 
-                var compositeObjectCreated = await _treina_PropostaService.Update(compositeObjectDTO);
+                var compositeObjectUpdated = await _treina_PropostaService.Update(compositeObjectDTO);
+
+                await _filaService.Enviar(compositeObjectUpdated.treina_PropostaDTO.Proposta, 
+                                          compositeObjectUpdated.treina_ClienteDTO.Dt_Nascimento, 
+                                          compositeObjectUpdated.treina_PropostaDTO.Prazo, 
+                                          compositeObjectUpdated.treina_PropostaDTO.Conveniada, 
+                                          compositeObjectUpdated.treina_PropostaDTO.Vlr_Solicitado);
 
                 return Ok(
                     new ResultViewModel
                     {
                         Message = "Cliente e Proposta atualizados com sucesso!!!",
                         Success = true,
-                        Data1 = compositeObjectCreated.treina_ClienteDTO,
-                        Data2 = compositeObjectCreated.treina_PropostaDTO
+                        Data1 = compositeObjectUpdated.treina_ClienteDTO,
+                        Data2 = compositeObjectUpdated.treina_PropostaDTO
                     });
             }
 

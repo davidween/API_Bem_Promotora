@@ -51,6 +51,8 @@ Criar pasta CRUD_DOTNET
     - Pasta MicroServices
         * dotnet add package MassTransit --version 7.2.3-develop.226
         * dotnet add package MassTransit.RabbitMQ --version 7.2.3-develop.226
+        * dotnet add package Dapper --version 2.0.90
+        * dotnet add package Microsoft.Data.SqlClient --version 4.0.0-preview1.21237.2
     
 
     - dotnet add Infrastructure/Infrastructure.csproj reference Domain/Domain.csproj
