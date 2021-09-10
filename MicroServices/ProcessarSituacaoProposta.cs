@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using MassTransit;
 using Dapper;
 using Service.DataTransferObject;
-using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
 
@@ -18,7 +17,7 @@ namespace MicroServices
 
             var idade_prazo = CalcularIdadePrazo(idade, context.Message.Prazo);
 
-            var situacao = await GetSituacaoAsync(idade_prazo, context.Message.Conveniada, context.Message.Vlr_Solicitado, context.Message.Proposta);
+            var situacao = await GetSituacaoAsync(idade_prazo, context.Message.Conveniada, context.Message.Vlr_Financiado, context.Message.Proposta);
         }
 
         private decimal CalcularIdade(DateTime data_nascimento)
@@ -26,18 +25,33 @@ namespace MicroServices
             return DateTime.Now.Year - data_nascimento.Year;
         }
 
-        public virtual async Task<List<TREINA_LIMITES_IDADE_CONVENIADA>> GetArrayRegras()
+        public virtual async Task<TREINA_LIMITES_IDADE_CONVENIADA> GetArrayRegras(decimal idade_prazo, string conveniada)
         {
             using(var conexaoBD = new SqlConnection(_connection_string))
             {
                 await conexaoBD.OpenAsync();
 
-                var query = @"SELECT CONVENIADA, IDADE_INICIAL, IDADE_FINAL, VALOR_LIMITE, PERCENTUAL_MAXIMO_ANALISE 
-                              FROM TREINA_LIMITES_IDADE_CONVENIADA;";
+                var query = @"
+                                SELECT 
+                                    CONVENIADA, 
+                                    IDADE_INICIAL, 
+                                    IDADE_FINAL, 
+                                    VALOR_LIMITE, 
+                                    PERCENTUAL_MAXIMO_ANALISE 
+                                FROM 
+                                    TREINA_LIMITES_IDADE_CONVENIADA
+                                WHERE
+                                    CONVENIADA = @conveniada
+                                    AND @idade_prazo BETWEEN IDADE_INICIAL AND IDADE_FINAL;";
 
-                var array_TREINA_LIMITES_IDADE_CONVENIADA = await conexaoBD.QueryAsync<TREINA_LIMITES_IDADE_CONVENIADA>(query);
+                var treina_LIMITES_IDADE_CONVENIADA = await conexaoBD.QueryAsync<TREINA_LIMITES_IDADE_CONVENIADA>(query, 
+                                                                                                                  new 
+                                                                                                                  { 
+                                                                                                                      idade_prazo = idade_prazo, 
+                                                                                                                      conveniada = conveniada
+                                                                                                                  });
 
-                return array_TREINA_LIMITES_IDADE_CONVENIADA.ToList();
+                return treina_LIMITES_IDADE_CONVENIADA.FirstOrDefault();
             }
         }
 
@@ -46,33 +60,32 @@ namespace MicroServices
             return Math.Floor(idade + prazo/12);
         }
 
-        private async Task<string> GetSituacaoAsync(decimal idade_prazo, string conveniada, decimal vlr_Solicitado, decimal proposta)
+        private async Task<string> GetSituacaoAsync(decimal idade_prazo, string conveniada, decimal Vlr_Financiado, decimal proposta)
         {
-            var array_regras = await GetArrayRegras();
+            var regras = await GetArrayRegras(idade_prazo, conveniada);
 
-            foreach (var item in array_regras)
+            
+            if(regras != null)
             {
-                if(conveniada == item.Conveniada && idade_prazo >= item.Idade_Inicial && idade_prazo <= item.Idade_Final)
+                if(Vlr_Financiado <= regras.Valor_Limite)
                 {
-                    if(vlr_Solicitado <= item.Valor_Limite)
-                    {
-                        await UpdateSituacao("AP", proposta, "");
-                        return "AP";
-                    }
+                    await UpdateSituacao("AP", proposta, "");
+                    return "AP";
+                }
 
-                    else if(vlr_Solicitado <= (item.Valor_Limite + (item.Valor_Limite * item.Percentual_Maximo_Analise * (decimal)0.01)))
-                    {
-                        await UpdateSituacao("AN", proposta, "Proposta acima do valor limite");
-                        return "AN";  // OBS.: Proposta acima do valor limite
-                    }
+                else if(Vlr_Financiado <= (regras.Valor_Limite + (regras.Valor_Limite * regras.Percentual_Maximo_Analise * (decimal)0.01)))
+                {
+                    await UpdateSituacao("AN", proposta, "Proposta acima do valor limite");
+                    return "AN";  // OBS.: Proposta acima do valor limite
+                }
 
-                    else
-                    {
-                        await UpdateSituacao("PE", proposta, "");
-                        return "PE";
-                    }
+                else
+                {
+                    await UpdateSituacao("PE", proposta, "");
+                    return "PE";
                 }
             }
+            
             await UpdateSituacao("RE", proposta, "");
             return "RE";
                         // 'AG', 'AGUARDANDO AN�LISE'
@@ -82,7 +95,7 @@ namespace MicroServices
                         // 'AP', 'APROVADA'
         }
 
-        private async Task<string> UpdateSituacao(string situacao, decimal proposta, string observacao) /////////////////////////////////////////////////////////
+        private async Task<string> UpdateSituacao(string situacao, decimal proposta, string observacao)
         {
             using(var conexaoBD = new SqlConnection(_connection_string))
             {

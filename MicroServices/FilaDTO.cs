@@ -12,6 +12,6 @@ namespace Service.DataTransferObject  // Mesmo namespace e class name para encon
 
         public string Conveniada { get; set; }
 
-        public decimal Vlr_Solicitado { get; set; }
+        public decimal Vlr_Financiado { get; set; }
     }
 }

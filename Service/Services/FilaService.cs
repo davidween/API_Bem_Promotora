@@ -15,7 +15,7 @@ namespace Service.Services
             _busControl = busControl;
         }
 
-        public async Task Enviar(decimal proposta, DateTime data_nascimento, decimal prazo, string conveniada, decimal vlr_solicitado)
+        public async Task Enviar(decimal proposta, DateTime data_nascimento, decimal prazo, string conveniada, decimal vlr_financiado)
         {
             await _busControl.Publish(new FilaDTO
             {
@@ -23,7 +23,7 @@ namespace Service.Services
                 Data_Nascimento = data_nascimento,
                 Prazo = prazo,
                 Conveniada = conveniada,
-                Vlr_Solicitado = vlr_solicitado
+                Vlr_Financiado = vlr_financiado
             });
 
         }

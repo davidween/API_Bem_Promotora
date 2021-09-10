@@ -11,7 +11,7 @@ namespace Service.Interfaces
 
         Task<CompositeObjectDTO> Get(string cpf);
 
-        Task<List<PageList>> GetAll(string usuario);
+        Task<List<PageListView>> GetAll(string usuario);
 
         Task<CompositeObjectDTO> Update(CompositeObjectDTO compositeObjectDTO);
     }

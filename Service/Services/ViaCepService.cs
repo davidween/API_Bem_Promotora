@@ -1,8 +1,8 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using Domain.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
+using Service.DataTransferObject;
 using Service.Interfaces;
 
 namespace Service.Services
@@ -16,9 +16,9 @@ namespace Service.Services
             _clientFactory = clientFactory;
         }
         
-        public async Task<Endereco> RecuperarEnderecoPorCep(string cep)
+        public async Task<EnderecoDTO> RecuperarEnderecoPorCep(string cep)
         {  
-            Endereco endereco = null;
+            EnderecoDTO endereco = null;
 
             var client = _clientFactory.CreateClient();
 
@@ -28,7 +28,7 @@ namespace Service.Services
 
             var responseBody = await response.Content.ReadAsStringAsync();
 
-            endereco = JsonConvert.DeserializeObject<Endereco>(responseBody);
+            endereco = JsonConvert.DeserializeObject<EnderecoDTO>(responseBody);
 
             return endereco; 
         }  

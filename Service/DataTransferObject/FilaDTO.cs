@@ -12,6 +12,6 @@ namespace Service.DataTransferObject
 
         public string Conveniada { get; set; }
 
-        public decimal Vlr_Solicitado { get; set; }
+        public decimal Vlr_Financiado { get; set; }
     }
 }

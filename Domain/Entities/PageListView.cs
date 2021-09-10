@@ -2,7 +2,7 @@ using System;
 
 namespace Domain.Entities
 {
-    public class PageList
+    public class PageListView
     {
         public string Cpf { get; set; }
 
@@ -26,12 +26,12 @@ namespace Domain.Entities
 
         public string Usuario { get; set; }
 
-        public PageList()
+        public PageListView()
         {
             
         }
 
-        public PageList(string cpf, string nome, decimal? proposta, string descricao_conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string descricao_situacao, string observacao, DateTime dt_Situacao, string usuario)
+        public PageListView(string cpf, string nome, decimal? proposta, string descricao_conveniada, decimal? vlr_Solicitado, decimal? prazo, decimal? vlr_Financiado, string descricao_situacao, string observacao, DateTime dt_Situacao, string usuario)
         {
             Cpf = cpf;
             Nome = nome;

@@ -1,6 +1,6 @@
-namespace Domain.Entities
+namespace Service.DataTransferObject
 {
-    public class Endereco
+    public class EnderecoDTO
     {
         public string cep { get; set; }
 

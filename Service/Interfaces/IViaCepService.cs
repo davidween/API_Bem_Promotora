@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using Domain.Entities;
+using Service.DataTransferObject;
 
 namespace Service.Interfaces
 {
     public interface IViaCepService
     {
-        Task<Endereco> RecuperarEnderecoPorCep(string cep);
+        Task<EnderecoDTO> RecuperarEnderecoPorCep(string cep);
     }
 }

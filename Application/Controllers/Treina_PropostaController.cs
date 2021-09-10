@@ -29,23 +29,17 @@ namespace Application.Controllers
         [HttpPost]
         [Authorize]
         [Route("/api/v1/treina_cliente_proposta/create")]
-        public async Task<IActionResult> Create([FromBody] CompositeObject compositeObject)
+        public async Task<IActionResult> Create([FromBody] CompositeObjectDTO compositeObjectDTO)
         {
             try
             {
-                var treina_clienteDTO = _mapper.Map<Treina_ClienteDTO>(compositeObject.treina_Cliente);
-
-                var treina_propostaDTO = _mapper.Map<Treina_PropostaDTO>(compositeObject.treina_Proposta);
-
-                var compositeObjectDTO = new CompositeObjectDTO(treina_clienteDTO, treina_propostaDTO);
-
                 var compositeObjectCreated = await _treina_PropostaService.Create(compositeObjectDTO);
 
                 await _filaService.Enviar(compositeObjectCreated.treina_PropostaDTO.Proposta, 
                                           compositeObjectCreated.treina_ClienteDTO.Dt_Nascimento, 
                                           compositeObjectCreated.treina_PropostaDTO.Prazo, 
                                           compositeObjectCreated.treina_PropostaDTO.Conveniada, 
-                                          compositeObjectCreated.treina_PropostaDTO.Vlr_Solicitado);
+                                          compositeObjectCreated.treina_PropostaDTO.Vlr_Financiado);
             
                 return Ok(
                     new ResultViewModel
@@ -123,23 +117,17 @@ namespace Application.Controllers
         [HttpPut]
         [Authorize]
         [Route("/api/v1/treina_cliente_proposta/update")]
-        public async Task<IActionResult> Update([FromBody] CompositeObject compositeObject)
+        public async Task<IActionResult> Update([FromBody] CompositeObjectDTO compositeObjectDTO)
         {
             try
             {
-                var treina_clienteDTO = _mapper.Map<Treina_ClienteDTO>(compositeObject.treina_Cliente);
-
-                var treina_propostaDTO = _mapper.Map<Treina_PropostaDTO>(compositeObject.treina_Proposta);
-
-                var compositeObjectDTO = new CompositeObjectDTO(treina_clienteDTO, treina_propostaDTO);
-
                 var compositeObjectUpdated = await _treina_PropostaService.Update(compositeObjectDTO);
 
                 await _filaService.Enviar(compositeObjectUpdated.treina_PropostaDTO.Proposta, 
                                           compositeObjectUpdated.treina_ClienteDTO.Dt_Nascimento, 
                                           compositeObjectUpdated.treina_PropostaDTO.Prazo, 
                                           compositeObjectUpdated.treina_PropostaDTO.Conveniada, 
-                                          compositeObjectUpdated.treina_PropostaDTO.Vlr_Solicitado);
+                                          compositeObjectUpdated.treina_PropostaDTO.Vlr_Financiado);
 
                 return Ok(
                     new ResultViewModel

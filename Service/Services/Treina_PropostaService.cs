@@ -46,13 +46,11 @@ namespace Service.Services
                 treina_Proposta.Proposta = await _treina_PropostaRepository.GerarKeyProposta();
                 
                 treina_Proposta.Validate();
-                //--------------------
-                var compositeObject = new CompositeObject(treina_Cliente, treina_Proposta);
-
-                var compositeObjectCreated = await _treina_PropostaRepository.Create(compositeObject);
+                //-------------------
+                var (treina_ClienteCreated, treina_PropostaCreated) = await _treina_PropostaRepository.Create(treina_Cliente, treina_Proposta);
                 // ------------------
                 
-                compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(compositeObjectCreated.treina_Cliente),_mapper.Map<Treina_PropostaDTO>(compositeObjectCreated.treina_Proposta));
+                compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(treina_ClienteCreated),_mapper.Map<Treina_PropostaDTO>(treina_PropostaCreated));
 
                 return compositeObjectDTO;
             }
@@ -68,7 +66,7 @@ namespace Service.Services
             return compositeObjectDTO;
         }
 
-        public async Task<List<PageList>> GetAll(string usuario)
+        public async Task<List<PageListView>> GetAll(string usuario)
         {
             var arrayPageList = await _treina_PropostaRepository.GetAll(usuario);
 
@@ -100,12 +98,10 @@ namespace Service.Services
                 
                 treina_Proposta.Validate();
                 //--------------------
-                var compositeObject = new CompositeObject(treina_Cliente, treina_Proposta);
-
-                var compositeObjectUpdated = await _treina_PropostaRepository.Update(compositeObject);
+                var (treina_ClienteUpdated, treina_PropostaUpdated) = await _treina_PropostaRepository.Update(treina_Cliente, treina_Proposta);
                 // ------------------
                 
-                compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(compositeObjectUpdated.treina_Cliente),_mapper.Map<Treina_PropostaDTO>(compositeObjectUpdated.treina_Proposta));
+                compositeObjectDTO = new CompositeObjectDTO(_mapper.Map<Treina_ClienteDTO>(treina_ClienteUpdated),_mapper.Map<Treina_PropostaDTO>(treina_PropostaUpdated));
 
                 return compositeObjectDTO;
             }

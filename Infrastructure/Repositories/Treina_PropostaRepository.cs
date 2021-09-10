@@ -21,14 +21,14 @@ namespace Infrastructure.Repositories
             _connectionString = (SqlConnection)_context.Database.GetDbConnection();
         }
 
-        public virtual async Task<CompositeObject> Create(CompositeObject compositeObject)
+        public virtual async Task<(Treina_Cliente, Treina_Proposta)> Create(Treina_Cliente treina_Cliente, Treina_Proposta treina_Proposta)
         {
-            _context.Add(compositeObject.treina_Cliente);  // Adicionamos a entidade ao context
-            _context.Add(compositeObject.treina_Proposta);  // Adicionamos a entidade ao context
+            _context.Add(treina_Cliente);  // Adicionamos a entidade ao context
+            _context.Add(treina_Proposta);  // Adicionamos a entidade ao context
 
             await _context.SaveChangesAsync();
 
-            return compositeObject;
+            return (treina_Cliente, treina_Proposta);
         }
 
         public async Task<decimal?> GerarKeyProposta()
@@ -58,7 +58,7 @@ namespace Infrastructure.Repositories
             return treina_Proposta.FirstOrDefault();
         }
 
-         public virtual async Task<List<PageList>> GetAll(string usuario)
+         public virtual async Task<List<PageListView>> GetAll(string usuario)
          {
              using (_connectionString)  // Usando DAPPER
              {
@@ -71,7 +71,7 @@ namespace Infrastructure.Repositories
                                 JOIN TREINA_CONVENIADAS AS CO ON P.CONVENIADA = CO.CONVENIADA 
                                 WHERE P.USUARIO = @usuario;";
 
-                var arrayPageList = await _connectionString.QueryAsync<PageList>(query, new { usuario = usuario});
+                var arrayPageList = await _connectionString.QueryAsync<PageListView>(query, new { usuario = usuario});
 
                 return arrayPageList.ToList();
             }
@@ -96,30 +96,18 @@ namespace Infrastructure.Repositories
                                         x.proposta.proposta.proposta.Dt_Situacao,
                                         x.proposta.proposta.proposta.Usuario 
                                     })
-                                    .ToListAsync();
-                                    
-            var arrayPageList = new List<PageList>();
-            
-
-            foreach (var item in obj)
-            {
-                var pageList = new PageList(item.Cpf, item.Nome, item.Proposta, item.Descricao, item.Vlr_Solicitado, item.Prazo, item.Vlr_Financiado, item.DescricaoSituacao, item.Observacao, item.Dt_Situacao, item.Usuario);
-
-                arrayPageList.Add(pageList);
-            }
-            
-            return arrayPageList;
+                                    .ToListAsync();        
             */
         }
 
-        public virtual async Task<CompositeObject> Update(CompositeObject compositeObject)
+        public virtual async Task<(Treina_Cliente, Treina_Proposta)> Update(Treina_Cliente treina_Cliente, Treina_Proposta treina_Proposta)
         {
-            _context.Entry(compositeObject.treina_Cliente).State = EntityState.Modified;  // Adicionamos a entidade ao context
-            _context.Entry(compositeObject.treina_Proposta).State = EntityState.Modified;  // Adicionamos a entidade ao context
+            _context.Entry(treina_Cliente).State = EntityState.Modified;  // Adicionamos a entidade ao context
+            _context.Entry(treina_Proposta).State = EntityState.Modified;  // Adicionamos a entidade ao context
 
             await _context.SaveChangesAsync();
 
-            return compositeObject;
+            return (treina_Cliente, treina_Proposta);
         }
     }
 }
