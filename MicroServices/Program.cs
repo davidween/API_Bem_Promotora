@@ -8,7 +8,7 @@ namespace MicroServices
 {
     class Program
     {
-        private static readonly AutoResetEvent _closing = new AutoResetEvent(false);
+        //private static readonly AutoResetEvent _closing = new AutoResetEvent(false);
         static async Task Main(string[] args)
         {
             var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
@@ -26,13 +26,6 @@ namespace MicroServices
                             });
                         });
 
-            await busControl.StartAsync();
-
-            Console.WriteLine("Servico Iniciado");
-
-            _closing.WaitOne();
-
-            /*
             try
             {
                 await busControl.StartAsync();
@@ -43,15 +36,17 @@ namespace MicroServices
                     Console.ReadLine();
                 });
             }
+
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
+            
             finally
             {
                 await busControl.StopAsync();
-            }*/
+            }
         }
     }
 }

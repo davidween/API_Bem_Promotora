@@ -4,23 +4,23 @@ using MassTransit;
 using Dapper;
 using Service.DataTransferObject;
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
 using System.Linq;
+using System.Data.SqlClient;
 
 namespace MicroServices
 {
     public class ProcessarSituacaoProposta : IConsumer<FilaDTO>
     {
-        private readonly string _connection_string = "Server=localhost;Database=master;User Id=SA;Password=HaltAndCatchF1re;";
-        public Task Consume(ConsumeContext<FilaDTO> context)
+        private string _connection_string = "Server=localhost;Database=master;User Id=SA;Password=HaltAndCatchF1re;";
+        public async Task Consume(ConsumeContext<FilaDTO> context)
         {
+            var array_regras = await GetArrayRegras();
+            
             var idade = CalcularIdade(context.Message.Data_Nascimento);
 
             var idade_prazo = CalcularIdadePrazo(idade, context.Message.Prazo);
 
-            var situacao = GetSituacaoAsync(idade_prazo, context.Message.Conveniada, context.Message.Vlr_Solicitado, context.Message.Proposta);
-
-            return Task.CompletedTask;
+            var situacao = await GetSituacaoAsync(idade_prazo, context.Message.Conveniada, context.Message.Vlr_Solicitado, context.Message.Proposta);
         }
 
         private decimal CalcularIdade(DateTime data_nascimento)
@@ -28,11 +28,9 @@ namespace MicroServices
             return DateTime.Now.Year - data_nascimento.Year;
         }
 
-        private async Task<List<TREINA_LIMITES_IDADE_CONVENIADA>> GetArrayRegras()
+        public virtual async Task<List<TREINA_LIMITES_IDADE_CONVENIADA>> GetArrayRegras()
         {
-            SqlConnection conexaoBD = new SqlConnection(_connection_string);
-
-            using(conexaoBD)
+            using(var conexaoBD = new SqlConnection(_connection_string))
             {
                 await conexaoBD.OpenAsync();
 
@@ -60,24 +58,24 @@ namespace MicroServices
                 {
                     if(vlr_Solicitado <= item.Valor_Limite)
                     {
-                        await UpdateSituacao("AP", proposta);
+                        await UpdateSituacao("AP", proposta, "");
                         return "AP";
                     }
 
                     else if(vlr_Solicitado <= (item.Valor_Limite + (item.Valor_Limite * item.Percentual_Maximo_Analise * (decimal)0.01)))
                     {
-                        await UpdateSituacao("AN", proposta);
+                        await UpdateSituacao("AN", proposta, "Proposta acima do valor limite");
                         return "AN";  // OBS.: Proposta acima do valor limite
                     }
 
                     else
                     {
-                        await UpdateSituacao("PE", proposta);
+                        await UpdateSituacao("PE", proposta, "");
                         return "PE";
                     }
                 }
             }
-            await UpdateSituacao("RE", proposta);
+            await UpdateSituacao("RE", proposta, "");
             return "RE";
                         // 'AG', 'AGUARDANDO AN�LISE'
                         // 'AN', 'EM AN�LISE MANUAL'
@@ -86,20 +84,19 @@ namespace MicroServices
                         // 'AP', 'APROVADA'
         }
 
-        private async Task<string> UpdateSituacao(string situacao, decimal proposta) /////////////////////////////////////////////////////////
+        private async Task<string> UpdateSituacao(string situacao, decimal proposta, string observacao) /////////////////////////////////////////////////////////
         {
-            SqlConnection conexaoBD = new SqlConnection(_connection_string);
-
-            using(conexaoBD)
+            using(var conexaoBD = new SqlConnection(_connection_string))
             {
                 await conexaoBD.OpenAsync();
 
-                var atualizarBD = @"UPDATE TREINA_PROPOSTAS SET SITUACAO = @situacao WHERE PROPOSTA = @proposta;";
+                var atualizarBD = @"UPDATE TREINA_PROPOSTAS SET SITUACAO = @situacao, OBSERVACAO = @observacao WHERE PROPOSTA = @proposta;";
 
                 conexaoBD.Execute(atualizarBD, new
                 {
                     situacao = situacao,
-                    proposta = proposta
+                    proposta = proposta,
+                    observacao = observacao
                 });
 
                 return "Atualizado com sucesso!!!";

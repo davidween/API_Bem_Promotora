@@ -10,10 +10,15 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/ref/Tests.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Tests.pdb
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/AutoMapper.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Automatonymous.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Dapper.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/FluentValidation.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/GreenPipes.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MassTransit.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MassTransit.RabbitMqTransport.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.AspNetCore.JsonPatch.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.Bcl.AsyncInterfaces.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.Data.SqlClient.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.dll
@@ -34,9 +39,11 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.TestPlatform.Utilities.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Microsoft.VisualStudio.TestPlatform.Common.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/testhost.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/NewId.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Newtonsoft.Json.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/NuGet.Frameworks.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/RabbitMQ.Client.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/System.Configuration.ConfigurationManager.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll

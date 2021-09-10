@@ -26,6 +26,7 @@ namespace Service.Services
                 Conveniada = conveniada,
                 Vlr_Solicitado = vlr_solicitado
             });
+
         }
     }
 }
