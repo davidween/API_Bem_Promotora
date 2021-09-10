@@ -14,8 +14,6 @@ namespace MicroServices
         private string _connection_string = "Server=localhost;Database=master;User Id=SA;Password=HaltAndCatchF1re;";
         public async Task Consume(ConsumeContext<FilaDTO> context)
         {
-            var array_regras = await GetArrayRegras();
-            
             var idade = CalcularIdade(context.Message.Data_Nascimento);
 
             var idade_prazo = CalcularIdadePrazo(idade, context.Message.Prazo);
