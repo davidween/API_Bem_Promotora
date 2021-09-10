@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using GreenPipes;
 using MassTransit;
@@ -8,7 +7,6 @@ namespace MicroServices
 {
     class Program
     {
-        //private static readonly AutoResetEvent _closing = new AutoResetEvent(false);
         static async Task Main(string[] args)
         {
             var busControl = Bus.Factory.CreateUsingRabbitMq(config =>
