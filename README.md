@@ -60,7 +60,7 @@ Criar pasta CRUD_DOTNET
     // Infrastructure enxerga Domain
     - dotnet add Service/Service.csproj reference Domain/Domain.csproj
     - dotnet add Service/Service.csproj reference Infrastructure/Infrastructure.csproj
-    - dotnet add Application/Application.csproj reference Infrastructure/Infrastructure.csproj  {Tentar Retirar}
+    - dotnet add Application/Application.csproj reference Infrastructure/Infrastructure.csproj  {Necessário para adição no escopo do Startup.cs}
     - dotnet add Application/Application.csproj reference Service/Service.csproj
     - dotnet add Application/Application.csproj reference Domain/Domain.csproj
     - dotnet add ./Tests/Tests.csproj reference ./Service/Service.csproj

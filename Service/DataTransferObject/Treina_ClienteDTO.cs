@@ -26,14 +26,14 @@ namespace Service.DataTransferObject
 
         public string Usuario_Atualizacao { get; set; }
 
-        public DateTime Data_Atualizacao { get; set; }
+        public DateTime? Data_Atualizacao { get; set; }
 
         public Treina_ClienteDTO()
         {
             
         }
 
-        public Treina_ClienteDTO(string cpf, string nome, DateTime dt_Nascimento, string genero, decimal vlr_Salario, string logradouro, string numero_Residencia, string bairro, string cidade, string cep, string usuario_Atualizacao, DateTime data_Atualizacao)
+        public Treina_ClienteDTO(string cpf, string nome, DateTime dt_Nascimento, string genero, decimal vlr_Salario, string logradouro, string numero_Residencia, string bairro, string cidade, string cep, string usuario_Atualizacao, DateTime? data_Atualizacao)
         {
             Cpf = cpf;
             Nome = nome;

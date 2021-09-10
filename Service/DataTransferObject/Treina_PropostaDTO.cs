@@ -20,20 +20,20 @@ namespace Service.DataTransferObject
 
         public string Observacao { get; set; }
 
-        public DateTime Dt_Situacao { get; set; }
+        public DateTime? Dt_Situacao { get; set; }
 
         public string Usuario { get; set; }
 
         public string Usuario_Atualizacao { get; set; }
 
-        public DateTime Data_Atualizacao { get; set; }
+        public DateTime? Data_Atualizacao { get; set; }
 
         public Treina_PropostaDTO()
         {
             
         }
 
-        public Treina_PropostaDTO(decimal proposta, string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string observacao, DateTime dt_Situacao, string usuario, string usuario_Atualizacao, DateTime data_Atualizacao)
+        public Treina_PropostaDTO(decimal proposta, string cpf, string conveniada, decimal vlr_Solicitado, decimal prazo, decimal vlr_Financiado, string situacao, string observacao, DateTime? dt_Situacao, string usuario, string usuario_Atualizacao, DateTime? data_Atualizacao)
         {
             Proposta = proposta;
             Cpf = cpf;

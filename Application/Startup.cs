@@ -117,14 +117,25 @@ namespace Application
             #endregion
 
             #region AutoMapper
-
-            var autoMapperConfig = new MapperConfiguration(cfg =>
+            
+            var autoMapperConfig = new MapperConfiguration(cfg => 
             {
-                cfg.CreateMap<Treina_Cliente, Treina_ClienteDTO>().ReverseMap();
-                cfg.CreateMap<Treina_Proposta, Treina_PropostaDTO>().ReverseMap();
-                cfg.CreateMap<Treina_Usuario, Treina_UsuarioDTO>().ReverseMap();
-            });
+                cfg.CreateMap<Treina_ClienteDTO, Treina_Cliente>()
+                    .ForMember(treina_Cliente => treina_Cliente.Usuario_Atualizacao, opt => opt.NullSubstitute("SISTEMA"))
+                    .ForMember(treina_Cliente => treina_Cliente.Data_Atualizacao, opt => opt.NullSubstitute(DateTime.Now));
 
+                cfg.CreateMap<Treina_PropostaDTO, Treina_Proposta>()
+                    .ForMember(treina_Proposta => treina_Proposta.Situacao, opt => opt.NullSubstitute("AG"))
+                    .ForMember(treina_Proposta => treina_Proposta.Dt_Situacao, opt => opt.NullSubstitute(DateTime.Now))
+                    .ForMember(treina_Proposta => treina_Proposta.Usuario_Atualizacao, opt => opt.NullSubstitute("SISTEMA"))
+                    .ForMember(treina_Proposta => treina_Proposta.Data_Atualizacao, opt => opt.NullSubstitute(DateTime.Now));
+
+                cfg.CreateMap<Treina_Cliente, Treina_ClienteDTO>();
+                cfg.CreateMap<Treina_Proposta, Treina_PropostaDTO>();
+                cfg.CreateMap<Treina_Usuario, Treina_UsuarioDTO>().ReverseMap();
+
+            });
+                
             services.AddSingleton(autoMapperConfig.CreateMapper());
 
             #endregion
