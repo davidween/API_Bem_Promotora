@@ -45,8 +45,8 @@ namespace Application.Controllers
                     {
                         Message = "Cliente e Proposta criados com sucesso!!!",
                         Success = true,
-                        Data1 = compositeObjectCreated.treina_ClienteDTO,
-                        Data2 = compositeObjectCreated.treina_PropostaDTO
+                        Cliente = compositeObjectCreated.treina_ClienteDTO,
+                        Proposta = compositeObjectCreated.treina_PropostaDTO
                     });
             }
 
@@ -74,8 +74,8 @@ namespace Application.Controllers
                 {
                     Message = "Consulta realizada com sucesso!",
                     Success = true,
-                    Data1 = compositeObjectDTO.treina_ClienteDTO,
-                    Data2 = compositeObjectDTO.treina_PropostaDTO
+                    Cliente = compositeObjectDTO.treina_ClienteDTO,
+                    Proposta = compositeObjectDTO.treina_PropostaDTO
                 });
             }
 
@@ -103,7 +103,7 @@ namespace Application.Controllers
                 {
                     Message = "Consulta realizada com sucesso!",
                     Success = true,
-                    Data1 = arrayPageList
+                    ArrayPageList = arrayPageList
                 });
             }
 
@@ -133,8 +133,8 @@ namespace Application.Controllers
                     {
                         Message = "Cliente e Proposta atualizados com sucesso!!!",
                         Success = true,
-                        Data1 = compositeObjectUpdated.treina_ClienteDTO,
-                        Data2 = compositeObjectUpdated.treina_PropostaDTO
+                        Cliente = compositeObjectUpdated.treina_ClienteDTO,
+                        Proposta = compositeObjectUpdated.treina_PropostaDTO
                     });
             }
 

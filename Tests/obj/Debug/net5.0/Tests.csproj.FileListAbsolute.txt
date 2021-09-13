@@ -146,3 +146,15 @@
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/obj/Debug/net5.0/ref/Tests.dll
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/obj/Debug/net5.0/Tests.pdb
 /home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/obj/Debug/net5.0/Tests.genruntimeconfig.cache
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MicroServices.deps.json
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MicroServices.runtimeconfig.json
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MicroServices.runtimeconfig.dev.json
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MicroServices
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/System.Data.SqlClient.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/runtimes/win-arm64/native/sni.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/runtimes/win-x64/native/sni.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/runtimes/win-x86/native/sni.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MicroServices.dll
+/home/m-david/Documentos/Teste/GIT/API_Bem_Promotora/Tests/bin/Debug/net5.0/MicroServices.pdb

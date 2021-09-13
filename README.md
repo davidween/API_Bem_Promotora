@@ -64,3 +64,4 @@ Criar pasta CRUD_DOTNET
     - dotnet add Application/Application.csproj reference Service/Service.csproj
     - dotnet add Application/Application.csproj reference Domain/Domain.csproj
     - dotnet add ./Tests/Tests.csproj reference ./Service/Service.csproj
+    - dotnet add ./Tests/Tests.csproj reference ./MicroServices/MicroServices.csproj

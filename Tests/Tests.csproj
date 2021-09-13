@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj" />
+    <ProjectReference Include="..\MicroServices\MicroServices.csproj" />
   </ItemGroup>
 
 </Project>

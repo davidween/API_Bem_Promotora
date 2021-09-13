@@ -17,7 +17,9 @@ namespace MicroServices
 
             var idade_prazo = CalcularIdadePrazo(idade, context.Message.Prazo);
 
-            var situacao = await GetSituacaoAsync(idade_prazo, context.Message.Conveniada, context.Message.Vlr_Financiado, context.Message.Proposta);
+            var (situacao, observacao) = await GetSituacaoAsync(idade_prazo, context.Message.Conveniada, context.Message.Vlr_Financiado);
+
+            await UpdateSituacao(situacao, context.Message.Proposta, observacao);
         }
 
         private decimal CalcularIdade(DateTime data_nascimento)
@@ -60,7 +62,7 @@ namespace MicroServices
             return Math.Floor(idade + prazo/12);
         }
 
-        private async Task<string> GetSituacaoAsync(decimal idade_prazo, string conveniada, decimal Vlr_Financiado, decimal proposta)
+        public async Task<(string, string)> GetSituacaoAsync(decimal idade_prazo, string conveniada, decimal Vlr_Financiado)
         {
             var regras = await GetArrayRegras(idade_prazo, conveniada);
 
@@ -69,25 +71,21 @@ namespace MicroServices
             {
                 if(Vlr_Financiado <= regras.Valor_Limite)
                 {
-                    await UpdateSituacao("AP", proposta, "");
-                    return "AP";
+                    return ("AP", "");
                 }
 
                 else if(Vlr_Financiado <= (regras.Valor_Limite + (regras.Valor_Limite * regras.Percentual_Maximo_Analise * (decimal)0.01)))
                 {
-                    await UpdateSituacao("AN", proposta, "Proposta acima do valor limite");
-                    return "AN";  // OBS.: Proposta acima do valor limite
+                    return ("AN", "Proposta acima do valor limite");  // OBS.: Proposta acima do valor limite
                 }
 
                 else
                 {
-                    await UpdateSituacao("PE", proposta, "");
-                    return "PE";
+                    return ("PE", "");
                 }
             }
             
-            await UpdateSituacao("RE", proposta, "");
-            return "RE";
+            return ("RE", "");
                         // 'AG', 'AGUARDANDO AN�LISE'
                         // 'AN', 'EM AN�LISE MANUAL'
                         // 'PE', 'PENDENTE DE AVALIA��O'

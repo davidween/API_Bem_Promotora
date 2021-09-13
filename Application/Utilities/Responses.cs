@@ -10,7 +10,7 @@ namespace Application.Utilities
             {
                 Message = "Erro interno na aplicação, por favor tente novamente mais tarde!!!",
                 Success = false,
-                Data = null
+                Errors = null
             };
         }
 
@@ -20,7 +20,7 @@ namespace Application.Utilities
             {
                 Message = message,
                 Success = false,
-                Data = null
+                Errors = null
             };
         }
 
@@ -30,7 +30,7 @@ namespace Application.Utilities
             {
                 Message = message,
                 Success = false,
-                Data = errors
+                Errors = errors
             };
         }
 
@@ -40,7 +40,7 @@ namespace Application.Utilities
             {
                 Message = "Você não tem autorização!!!",
                 Success = false,
-                Data = null
+                Errors = null
             };
         }
     }
